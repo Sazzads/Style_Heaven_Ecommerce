@@ -3,6 +3,8 @@ import Cover from './Cover';
 import Brand from './Brand';
 import { Helmet } from 'react-helmet-async';
 import AllItems from '../../AllItems/AllItems';
+import Category from './Category/Category';
+
 
 const Home = () => {
     return (
@@ -13,7 +15,11 @@ const Home = () => {
             <Cover></Cover>
             <div className='max-w-screen-xl mx-auto' >
                 <Brand></Brand>
+            </div> 
+            <div className='max-w-screen-xl mx-auto' >
+                <Category></Category>
             </div>
+
             <AllItems></AllItems>
         </div>
     );
