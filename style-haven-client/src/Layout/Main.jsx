@@ -6,7 +6,7 @@ import Navbar1 from '../Pages/Shared/NavBar/Navbar1';
 
 const Main = () => {
     const location=useLocation()
-    console.log(location);
+    // console.log(location);
     return (
         <div>
             <Navbar1></Navbar1>

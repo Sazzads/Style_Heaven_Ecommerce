@@ -1,8 +1,15 @@
-import React from 'react';
-import { FaSearch, FaAlignJustify } from 'react-icons/fa';
+import React, { useContext } from 'react';
+import { FaSearch, FaAlignJustify, FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     const navOptions = <>
         <li><Link className='me-1'>New</Link></li>
         <li><Link>Tops</Link></li>
@@ -55,13 +62,13 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                               {user ? <img referrerPolicy='no-referrer' src={user?.photoURL} />: <div className='text-3xl p-1'><FaUserAlt></FaUserAlt></div>}
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-36">
-                            <li><Link to="/">Profile</Link></li>
-                            <li><Link to="/login">Login</Link></li>
-                            <li><a>Logout</a></li>
+                            {
+                                user ? <><li><Link to="/">Profile</Link></li><li onClick={handleLogOut}><a>Logout</a></li></> : <li><Link to="/login">Login</Link></li>
+                            }
                         </ul>
                     </div>
                 </div>
