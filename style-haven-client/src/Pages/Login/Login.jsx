@@ -40,7 +40,7 @@ const Login = () => {
                             <p>Don't Have An Account? <Link to="/register" className='text-red-600'>Please Register</Link></p>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn  bg-purple-700">Login</button>
+                            <button className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black">Login</button>
                         </div>
                     </div>
                 </div>

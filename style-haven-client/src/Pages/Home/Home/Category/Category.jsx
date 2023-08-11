@@ -53,14 +53,14 @@ const Category = () => {
                     <h2 className="text-4xl text-center py-5 ">Mens</h2>
                     <OrderTab items={newSoups}></OrderTab>
                     <div className='flex items-center flex-col'>
-                        <Link className='  px-5 py-2  bg-purple-800 rounded-lg  hover:bg-purple-500 ' to={`/orderCategory/${'soup'}`}>see more</Link>
+                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'soup'}`}> <span className='text-white'>see more</span> </Link>
                     </div>
                 </TabPanel>
                 <TabPanel>
                     <h2 className="text-4xl text-center py-5">Womens</h2>
                     <OrderTab items={newSalad}></OrderTab>
                     <div className='flex items-center flex-col'>
-                        <Link className='  px-5 py-2  bg-purple-800 rounded-lg  hover:bg-purple-500 ' to={`/orderCategory/${'salad'}`}>see more</Link>
+                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'salad'}`}> <span className='text-white'>see more</span> </Link>
                     </div>
 
                 </TabPanel>
@@ -68,7 +68,7 @@ const Category = () => {
                     <h2 className="text-4xl text-center py-5">Kids</h2>
                     <OrderTab items={newPizzas}></OrderTab>
                     <div className='flex items-center flex-col'>
-                        <Link className='  px-5 py-2  bg-purple-800 rounded-lg  hover:bg-purple-500 ' to={`/orderCategory/${'pizza'}`}>see more</Link>
+                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'pizza'}`}> <span className='text-white'>see more</span> </Link>
                     </div>
 
 

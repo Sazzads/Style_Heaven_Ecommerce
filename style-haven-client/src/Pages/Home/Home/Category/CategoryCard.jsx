@@ -12,7 +12,7 @@ const CategoryCard = ({item}) => {
                     
                     <p>{recipe}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Add to Cart</button>
+                        <button className="btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 "><span className='text-white'>Add to Cart</span></button>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,8 @@ const Cover = () => {
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
-                            <button className="px-5 py-2 bg-purple-800 rounded-lg flex items-center hover:bg-purple-500"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
+                            <button className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
+                        
                         </div>
                     </div>
                 </div>
@@ -25,7 +26,7 @@ const Cover = () => {
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
-                            <button className="px-5 py-2 bg-purple-800 rounded-lg flex items-center hover:bg-purple-500"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
+                            <button className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
 
                         </div>
                     </div>
@@ -36,7 +37,7 @@ const Cover = () => {
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl text-pur'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
-                            <button className="px-5 py-2 bg-purple-800 rounded-lg flex items-center hover:bg-purple-500"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
+                            <button className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
 
                         </div>
                     </div>
@@ -47,17 +48,17 @@ const Cover = () => {
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
-                            <button className="px-5 py-2 bg-purple-800 rounded-lg flex items-center hover:bg-purple-500"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
+                            <button className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
 
                         </div>
                     </div>
                 </div>
             </div>
             <div className="flex justify-center w-full py-2 gap-2">
-                <a href="#item1" className="btn btn-xs bg-purple-600">1</a>
-                <a href="#item2" className="btn btn-xs bg-purple-600">2</a>
-                <a href="#item3" className="btn btn-xs bg-purple-600">3</a>
-                <a href="#item4" className="btn btn-xs bg-purple-600">4</a>
+                <a href="#item1" className="btn btn-xs bg-pink-600">1</a>
+                <a href="#item2" className="btn btn-xs bg-pink-600">2</a>
+                <a href="#item3" className="btn btn-xs bg-pink-600">3</a>
+                <a href="#item4" className="btn btn-xs bg-pink-600">4</a>
             </div>
         </div>
     );
