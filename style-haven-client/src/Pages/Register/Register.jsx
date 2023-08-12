@@ -1,14 +1,17 @@
 import React, { useContext } from 'react';
 import Lottie from "lottie-react";
 import pic from "../../assets/register.json"
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaEye } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-toastify';
 const Register = () => {
-  
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const img_Hosting_token = import.meta.env.VITE_IMG_UPLOAD_TOKEN
     console.log(img_Hosting_token);
@@ -33,7 +36,21 @@ const Register = () => {
                             console.log(loggedUser);
                             updateUserProfile(data.name, data.image)
                                 .then(() => {
-                                    console.log("user updated");
+                                    const saveUser = { name: data.name, email: data.email, photoUrl: data.image }
+                                    //store user info into db
+                                    fetch(`http://localhost:5000/users`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'content-type': 'application/json'
+                                        },
+                                        body: JSON.stringify(saveUser)
+                                    })
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            if (data.insertedId) {
+                                                // console.log("done");
+                                            }
+                                        })
                                     reset()
                                 })
                                 .catch(error => {
@@ -41,6 +58,7 @@ const Register = () => {
                                 })
                         })
                     // console.log(data);
+                    navigate(from, { replace: true })
                 }
             })
 

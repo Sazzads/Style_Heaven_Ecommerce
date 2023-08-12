@@ -30,6 +30,7 @@ async function run() {
         // db collection 
         const menuCollection = client.db("styleHeaven").collection("menu")
         const cartCollection = client.db("styleHeaven").collection("carts")
+        const usersCollection = client.db("styleHeaven").collection("users")
 
 
         app.get('/menu', async (req, res) => {
@@ -38,12 +39,7 @@ async function run() {
         })
 
         //cart collection
-        // app.post("/carts", async (req, res) => {
-        //     const item = req.body;
-        //     console.log(item);
-        //     const result = await cartCollection.insertOne(item)
-        //     res.send(result);
-        // })
+
         app.post('/carts', async (req, res) => {
             const item = req.body;
             // console.log(item);
@@ -67,6 +63,14 @@ async function run() {
             const result = await cartCollection.deleteOne(query)
             res.send(result)
         })
+
+        //users collection
+        app.post('/users', async (req, res) => {
+            const user = req.body;
+            const result = await usersCollection.insertOne(user);
+            res.send(result);
+        })
+
 
 
 
