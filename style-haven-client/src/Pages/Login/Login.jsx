@@ -6,7 +6,7 @@ import { FaEye } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useForm } from "react-hook-form";
-
+import { toast } from 'react-toastify';
 const Login = () => {
     const { signIn } = useContext(AuthContext)
     const navigate=useNavigate()
@@ -24,6 +24,7 @@ const Login = () => {
         console.log(data)
         navigate(from,{replace:true})
     };
+    // const notify = () => toast("Login Successful");
     return (
         <div className='max-w-screen-xl mx-auto bg-slate-100'>
             <Helmet>
@@ -61,7 +62,7 @@ const Login = () => {
                         <div>
                             <p>Don't Have An Account? <Link to="/register" className='text-red-600'>Please Register</Link></p>
                         </div>
-                        <div className="form-control mt-6">
+                        <div onClick={ () => toast("Login Successful")} className="form-control mt-6">
                         <input type="submit" value="Login" className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black w-1/2 mx-auto" />
 
                         </div>

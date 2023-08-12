@@ -6,7 +6,9 @@ import { FaEye } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../providers/AuthProvider';
+import { toast } from 'react-toastify';
 const Register = () => {
+  
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const img_Hosting_token = import.meta.env.VITE_IMG_UPLOAD_TOKEN
     console.log(img_Hosting_token);
@@ -98,7 +100,7 @@ const Register = () => {
                         <div>
                             <p>Don't Have An Account? <Link to="/login" className='text-red-600'>Please Login</Link></p>
                         </div>
-                        <div className="form-control mt-6">
+                        <div onClick={() => toast.success("Registration Successful")} className="form-control mt-6">
                             <input type="submit" value="Register" className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black w-1/2 mx-auto" />
                         </div>
                     </form>
