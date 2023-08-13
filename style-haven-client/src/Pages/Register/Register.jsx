@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-toastify';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const Register = () => {
     const navigate = useNavigate()
     const location = useLocation()
@@ -36,7 +37,7 @@ const Register = () => {
                             console.log(loggedUser);
                             updateUserProfile(data.name, data.image)
                                 .then(() => {
-                                    const saveUser = { name: data.name, email: data.email, photoUrl: data.image }
+                                    const saveUser = { name: data.name, email: data.email, photoUrl: data.image, role: 'customer' }
                                     //store user info into db
                                     fetch(`http://localhost:5000/users`, {
                                         method: 'POST',
@@ -48,10 +49,11 @@ const Register = () => {
                                         .then(res => res.json())
                                         .then(data => {
                                             if (data.insertedId) {
+                                                reset()
                                                 // console.log("done");
                                             }
                                         })
-                                    reset()
+
                                 })
                                 .catch(error => {
                                     console.log(error);
@@ -122,6 +124,7 @@ const Register = () => {
                             <input type="submit" value="Register" className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black w-1/2 mx-auto" />
                         </div>
                     </form>
+                    <SocialLogin></SocialLogin>
                 </div>
                 <div className='p-24 '>
                     <Lottie animationData={pic} loop={true} />

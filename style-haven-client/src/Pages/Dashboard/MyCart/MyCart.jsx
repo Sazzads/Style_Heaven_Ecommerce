@@ -8,7 +8,7 @@ const MyCart = () => {
     const [cart, refetch] = useCart()
     const total = cart.reduce((sum, item) => item.price + sum, 0)
     const vatTotal = total * 7 / 100 + total
-    console.log(vatTotal);
+    // console.log(vatTotal);
     
     const handleDellete = (item) => {
         Swal.fire({

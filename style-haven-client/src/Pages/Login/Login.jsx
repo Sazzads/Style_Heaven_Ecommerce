@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../providers/AuthProvider';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const Login = () => {
     const { signIn } = useContext(AuthContext)
     const navigate=useNavigate()
@@ -67,6 +68,7 @@ const Login = () => {
 
                         </div>
                     </form>
+                    <SocialLogin></SocialLogin>
                 </div>
                 <div className='p-24 '>
                     <Lottie animationData={pic} loop={true} />

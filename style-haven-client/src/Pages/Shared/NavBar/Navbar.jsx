@@ -16,6 +16,7 @@ const Navbar = () => {
         logOut()
             .then(() => { })
             .catch(error => console.log(error))
+            
     }
     const navOptions = <>
         <li><Link className='me-1'>New</Link></li>
