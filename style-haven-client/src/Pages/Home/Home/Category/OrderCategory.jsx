@@ -5,7 +5,9 @@ import CategoryCard from './CategoryCard';
 
 const OrderCategory = () => {
     const { category } = useParams()
+    console.log(category);
     const [allItems] = useAllItems();
+    console.log(allItems);
     const orderItems = allItems.filter(item => item.category === category)
     console.log(orderItems);
 

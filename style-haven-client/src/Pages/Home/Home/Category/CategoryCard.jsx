@@ -5,14 +5,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../../../hooks/useCart';
 
 const CategoryCard = ({ item }) => {
-    const { name, image, price, recipe, _id } = item
+    const { name, photoUrl:image, price, recipe, _id } = item
+    // console.log(item);
 
     const { user } = useContext(AuthContext)
     const [,refetch] = useCart()
     const location = useLocation()
     const navigate = useNavigate()
     const handleAddTocart = item => {
-        // console.log(item);
+        console.log(item);
         if (user && user.email) {
             const cartItem = { itemId: _id, name, image, price, email: user.email }
             fetch('http://localhost:5000/carts', {

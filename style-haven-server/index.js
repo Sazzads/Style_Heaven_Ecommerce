@@ -46,6 +46,7 @@ async function run() {
         await client.connect();
         // db collection 
         const menuCollection = client.db("styleHeaven").collection("menu")
+        const productCollection = client.db("styleHeaven").collection("product")
         const cartCollection = client.db("styleHeaven").collection("carts")
         const usersCollection = client.db("styleHeaven").collection("users")
 
@@ -68,10 +69,17 @@ async function run() {
 
         }
 
-
-        app.get('/menu', async (req, res) => {
-            const result = await menuCollection.find().toArray()
+        //product related api
+        app.get('/products', async (req, res) => {
+            const result = await productCollection.find().toArray()
             res.send(result)
+        })
+
+        app.post('/product', async (req, res) => {
+            const newItem = req.body;
+            const result = await productCollection.insertOne(newItem)
+            res.send(result)
+
         })
 
         //cart collection
@@ -104,7 +112,7 @@ async function run() {
         })
 
         //users collection
-        app.post('/users',verifyJWT,verifyAdmin, async (req, res) => {
+        app.post('/users', verifyJWT, verifyAdmin, async (req, res) => {
             const user = req.body;
             const query = { email: user.email }
             const existingUser = await usersCollection.findOne(query)

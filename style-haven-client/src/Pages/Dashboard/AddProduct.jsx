@@ -1,15 +1,16 @@
 import React from 'react';
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import useAuth from '../../hooks/useAuth';
-import Select from "react-select";
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 const AddProduct = () => {
     const { user } = useAuth();
     const { email } = user
-
+    const [axiosSecure] = useAxiosSecure()
     const img_Hosting_token = import.meta.env.VITE_IMG_UPLOAD_TOKEN
     // console.log(img_Hosting_token);
-    const { control, register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_Hosting_token}`
     const onSubmit = data => {
         // alert(JSON.stringify(data.iceCreamType.value));
@@ -25,11 +26,20 @@ const AddProduct = () => {
                     const imgURL = imgResponse.data.display_url;
                     const newdata = data;
                     newdata.image = imgURL
-                    const saveUser = { name: data.name, email: data.email, photoUrl: data.image, price: data.price, category: data.category.value }
-                    console.log(saveUser);
+                    const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price), category: data.category, details: data.details }
+                    console.log(saveProduct);
                     //store product info into db 
-
-
+                    axiosSecure.post('/product',saveProduct)
+                    .then(data=>{
+                        console.log('after posing item',data.data);
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    })
 
 
 
@@ -68,27 +78,24 @@ const AddProduct = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text">Details</span>
+                            </label>
+                            <input  {...register("details", { required: true })} type="text" placeholder="price" className="input input-bordered" />
+                            {errors.name && <span className='text-red-600'>This field is required</span>}
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text">Category</span>
                             </label>
-                            <Controller
-                                name="category"
-                                render={({ field }) => (
-                                    <Select
-
-                                        {...field}
-                                        options={[
-                                            { value: "mens", label: "Mens" },
-                                            { value: "womens", label: "Womens" },
-                                            { value: "kids", label: "Kids" },
-                                            { value: "tops", label: "Tops" },
-                                            { value: "bottoms", label: "Bottoms" },
-                                            { value: "accessories", label: "Accessories" },
-                                        ]}
-                                    />
-                                )}
-                                control={control}
-                                defaultValue=""
-                            />
+                            <select {...register("category", { required: true })} className="input input-bordered">
+                                <option disabled>Pick One</option>
+                                <option>mens</option>
+                                <option>womens</option>
+                                <option>kids</option>
+                                <option>tops</option>
+                                <option>bottoms</option>
+                                <option>accessories</option>
+                            </select>
                         </div>
 
 
@@ -107,7 +114,7 @@ const AddProduct = () => {
 
 
                     <div onClick={() => toast.success("Registration Successful")} className="form-control mt-6">
-                        <input type="submit" value="Register" className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black w-1/2 mx-auto" />
+                        <input type="submit" value="Add to Product" className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black w-1/2 mx-auto" />
                     </div>
                 </form>
             </div>

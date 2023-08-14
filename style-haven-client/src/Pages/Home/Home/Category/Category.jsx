@@ -11,13 +11,13 @@ import { Link } from 'react-router-dom';
 const Category = () => {
     const [tabIndex, setTabIndex] = useState(0)
     const [allItems] = useAllItems();
-
-    const soups = allItems.filter(item => item.category === 'soup')
-   const  newSoups=soups.slice(0,6)
-    const salads = allItems.filter(item => item.category === 'salad')
-   const  newSalad=salads.slice(0,6)
-   const pizzas = allItems.filter(item => item.category === 'pizza')
-   const  newPizzas=pizzas.slice(0,6)
+    console.log(allItems);
+    const mens = allItems.filter(item => item.category === 'mens')
+    const newMens = mens.slice(0, 6)
+    const womens = allItems.filter(item => item.category === 'womens')
+    const newWomens = womens.slice(0, 6)
+    const kids = allItems.filter(item => item.category === 'kids')
+    const newKids = kids.slice(0, 6)
 
     return (
         <div>
@@ -51,24 +51,24 @@ const Category = () => {
                 </TabList>
                 <TabPanel>
                     <h2 className="text-4xl text-center py-5 ">Mens</h2>
-                    <OrderTab items={newSoups}></OrderTab>
+                    <OrderTab items={newMens}></OrderTab>
                     <div className='flex items-center flex-col'>
-                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'soup'}`}> <span className='text-white'>see more</span> </Link>
+                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'mens'}`}> <span className='text-white'>see more</span> </Link>
                     </div>
                 </TabPanel>
                 <TabPanel>
                     <h2 className="text-4xl text-center py-5">Womens</h2>
-                    <OrderTab items={newSalad}></OrderTab>
+                    <OrderTab items={newWomens}></OrderTab>
                     <div className='flex items-center flex-col'>
-                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'salad'}`}> <span className='text-white'>see more</span> </Link>
+                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'womens'}`}> <span className='text-white'>see more</span> </Link>
                     </div>
 
                 </TabPanel>
                 <TabPanel>
                     <h2 className="text-4xl text-center py-5">Kids</h2>
-                    <OrderTab items={newPizzas}></OrderTab>
+                    <OrderTab items={newKids}></OrderTab>
                     <div className='flex items-center flex-col'>
-                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'pizza'}`}> <span className='text-white'>see more</span> </Link>
+                        <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to={`/orderCategory/${'kids'}`}> <span className='text-white'>see more</span> </Link>
                     </div>
 
 
