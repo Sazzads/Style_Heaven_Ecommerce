@@ -111,6 +111,33 @@ async function run() {
             const result = await productCollection.find({ email: req.params.email }).toArray()
             res.send(result)
         })
+        //search product by id
+        app.get('/product/:id', async (req, res) => {
+            const id = (req.params.id);
+            const result = await productCollection.find({ _id: new ObjectId(id) }).toArray()
+            res.send(result)
+            console.log(result);
+        })
+        //update product
+        app.put('/product/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) }
+            const options = { upsert: true };
+            const saveProduct = req.body;
+            const product = {
+                $set: {
+                    name: saveProduct.name,
+                    category: saveProduct.category,
+                    details: saveProduct.details,
+                    photo: saveProduct.photoUrl,
+                    price: saveProduct.price,
+                    email: saveProduct.email,
+                }
+            }
+            const result = await productCollection.updateOne(filter, product, options);
+            res.send(result)
+
+        })
 
         //dellete products
         app.delete('/products/:id', verifyJWT, verifySeller, async (req, res) => {

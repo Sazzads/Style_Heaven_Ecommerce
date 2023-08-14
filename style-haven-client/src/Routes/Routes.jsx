@@ -13,6 +13,8 @@ import AdminRoute from "./AdminROute";
 import SellerRoute from "./SellerRoute";
 import AddProduct from "../Pages/Dashboard/AddProduct";
 import ManageProducts from "../Pages/Dashboard/ManageProducts";
+import EditProduct from "../Pages/Dashboard/EditProduct";
+import ManageSellerProduct from "../Pages/Dashboard/Admin/ManageSellerProduct";
 
 const router = createBrowserRouter([
   {
@@ -55,12 +57,20 @@ const router = createBrowserRouter([
         element: <AdminRoute><Users></Users></AdminRoute>
       },
       {
+        path: 'managesellerproduct',
+        element: <AdminRoute><ManageSellerProduct></ManageSellerProduct></AdminRoute>
+      },
+      {
         path: 'addproduct',
         element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
       },
       {
         path: 'managepreoducts',
         element: <SellerRoute><ManageProducts></ManageProducts></SellerRoute>
+      },
+      {
+        path: 'editproduct/:id',
+        element: <SellerRoute><EditProduct></EditProduct></SellerRoute>
       },
     ]
   }

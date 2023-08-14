@@ -4,6 +4,7 @@ import { FaEdit, FaEye, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 const ManageProducts = () => {
     // const [datas, setDatas] = useState([])
@@ -84,7 +85,7 @@ const ManageProducts = () => {
                                             <label tabIndex={0} className="text-blue-600"> Action</label>
                                             <ul tabIndex={0} className="dropdown-content z-[1] menu  rounded-box bg-slate-100 ">
                                                 <li><a className="text-blue-600"><FaEye></FaEye>View</a></li>
-                                                <li><a className="text-green-600"><FaEdit></FaEdit> Edit</a></li>
+                                                <li><Link to={`/dashboard/editproduct/${item._id}`} className="text-green-600"><FaEdit></FaEdit> Edit</Link></li>
                                                 <li onClick={() => handleDellete(item)}><a className="text-red-600"><FaTrashAlt></FaTrashAlt> Dellete</a></li>
                                             </ul>
                                         </div>
