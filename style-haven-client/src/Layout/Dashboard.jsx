@@ -41,7 +41,7 @@ const Dashboard = () => {
                         {isSeller && <>
                             <li><NavLink to='/dashboard/'><FaHouseUser></FaHouseUser>seller Home </NavLink></li>
                             <li><NavLink to='/dashboard/addproduct'><FaTshirt></FaTshirt>Add Product </NavLink></li>
-                            <li><NavLink to='/dashboard/ss'><FaTshirt></FaTshirt>Edit Product </NavLink></li>
+                            <li><NavLink to='/dashboard/managepreoducts'><FaTshirt></FaTshirt>Manage Products </NavLink></li>
                         </>}
                         {isCustomer && <>
                             <li><NavLink to='/dashboard/'><FaHouseUser></FaHouseUser>Customer Home </NavLink></li>

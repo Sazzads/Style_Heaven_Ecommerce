@@ -12,6 +12,7 @@ import Users from "../Layout/Users";
 import AdminRoute from "./AdminROute";
 import SellerRoute from "./SellerRoute";
 import AddProduct from "../Pages/Dashboard/AddProduct";
+import ManageProducts from "../Pages/Dashboard/ManageProducts";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: 'addproduct',
         element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+      },
+      {
+        path: 'managepreoducts',
+        element: <SellerRoute><ManageProducts></ManageProducts></SellerRoute>
       },
     ]
   }

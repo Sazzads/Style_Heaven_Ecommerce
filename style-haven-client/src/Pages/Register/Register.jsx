@@ -50,7 +50,7 @@ const Register = () => {
                                         .then(data => {
                                             if (data.insertedId) {
                                                 reset()
-                                                // console.log("done");
+                                                console.log("done");
                                             }
                                         })
 
@@ -59,7 +59,7 @@ const Register = () => {
                                     console.log(error);
                                 })
                         })
-                    // console.log(data);
+                    console.log(data);
                     navigate(from, { replace: true })
                 }
             })

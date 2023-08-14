@@ -44,12 +44,19 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
-        // db collection 
-        const menuCollection = client.db("styleHeaven").collection("menu")
+
+        /*---------------------------------------------
+       --------------db collection ------------- 
+       -----------------------------------------------*/
         const productCollection = client.db("styleHeaven").collection("product")
         const cartCollection = client.db("styleHeaven").collection("carts")
         const usersCollection = client.db("styleHeaven").collection("users")
 
+
+
+        /*---------------------------------------------
+        --------------verify jwt related api------------- 
+        -----------------------------------------------*/
         // jwt api 
         app.post('/jwt', (req, res) => {
             const user = req.body;
@@ -68,28 +75,63 @@ async function run() {
             next()
 
         }
+        //verify seller
+        const verifySeller = async (req, res, next) => {
+            const email = req.decoded.email;
+            const query = { email: email }
+            const user = await usersCollection.findOne(query)
+            if (user?.role !== 'seller') {
+                return res.status(403).send({ error: true, message: 'forbidden message' })
+            }
+            next()
 
-        //product related api
+        }
+
+        /*---------------------------------------------
+        --------------product related api------------- 
+        -----------------------------------------------*/
+        //get product
         app.get('/products', async (req, res) => {
             const result = await productCollection.find().toArray()
             res.send(result)
         })
 
-        app.post('/product', async (req, res) => {
+        //post product
+        app.post('/product', verifyJWT, verifySeller, async (req, res) => {
             const newItem = req.body;
             const result = await productCollection.insertOne(newItem)
             res.send(result)
 
         })
 
-        //cart collection
+        //search product by email
+        app.get('/products/:email', async (req, res) => {
+            const email = req.query.email;
+            // console.log(req.params.email);
+            const result = await productCollection.find({ email: req.params.email }).toArray()
+            res.send(result)
+        })
 
+        //dellete products
+        app.delete('/products/:id', verifyJWT, verifySeller, async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await productCollection.deleteOne(query)
+            res.send(result)
+        })
+
+
+        /*------------------------------------------------
+         ---------cart collection related api------------- 
+         -----------------------------------------------*/
+        //add cart
         app.post('/carts', async (req, res) => {
             const item = req.body;
             // console.log(item);
             const result = await cartCollection.insertOne(item)
             res.send(result);
         })
+        //get cart data
         app.get('/carts', verifyJWT, async (req, res) => {
             const email = req.query.email;
             if (!email) {
@@ -104,6 +146,7 @@ async function run() {
             res.send(result)
 
         })
+        //delete cart 
         app.delete("/carts/:id", async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
@@ -111,8 +154,11 @@ async function run() {
             res.send(result)
         })
 
-        //users collection
-        app.post('/users', verifyJWT, verifyAdmin, async (req, res) => {
+        /*----------------------------------------------
+        ----------users collection related api-------
+        ---------------------------------------------*/
+        //post users
+        app.post('/users', async (req, res) => {
             const user = req.body;
             const query = { email: user.email }
             const existingUser = await usersCollection.findOne(query)
@@ -122,12 +168,12 @@ async function run() {
             const result = await usersCollection.insertOne(user);
             res.send(result);
         })
-
+        //get users
         app.get('/users', async (req, res) => {
             const result = await usersCollection.find().toArray()
             res.send(result)
         })
-
+        //edit users
         app.put("/users/:id", async (req, res) => {
             const id = req.params.id;
             const newRole = req.body.role;
@@ -143,7 +189,9 @@ async function run() {
             res.send(result)
         });
 
-
+        /*---------------------------------------------
+         --------------chacking related api------------- 
+         -----------------------------------------------*/
         //check admin
         app.get('/users/admin/:email', verifyJWT, async (req, res) => {
             const email = req.params.email;

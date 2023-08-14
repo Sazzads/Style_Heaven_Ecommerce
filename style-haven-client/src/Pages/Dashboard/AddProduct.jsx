@@ -27,19 +27,23 @@ const AddProduct = () => {
                     const newdata = data;
                     newdata.image = imgURL
                     const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price), category: data.category, details: data.details }
-                    console.log(saveProduct);
+                    // console.log(saveProduct);
                     //store product info into db 
-                    axiosSecure.post('/product',saveProduct)
-                    .then(data=>{
-                        console.log('after posing item',data.data);
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Your work has been saved',
-                            showConfirmButton: false,
-                            timer: 1500
-                          })
-                    })
+                    axiosSecure.post('/product', saveProduct)
+                        .then(data => {
+                            // console.log('after posing item', data.data);
+                            if (data.data.insertedId) {
+                                // reset() //TODO-uncomment reset()
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Your work has been saved',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+
+                        })
 
 
 
