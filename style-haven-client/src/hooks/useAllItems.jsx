@@ -12,7 +12,7 @@ const useAllItems = () => {
     //             setLoading(false)
     //         })
     // }, [])
-    const { data: allItems = [], isLoading: loading } = useQuery({
+    const {refetch, data: allItems = [], isLoading: loading } = useQuery({
         queryKey: ['allItems'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/products');
@@ -20,7 +20,7 @@ const useAllItems = () => {
         }
     })
 
-    return [allItems, loading]
+    return [allItems,refetch,, loading]
 }
 
 export default useAllItems

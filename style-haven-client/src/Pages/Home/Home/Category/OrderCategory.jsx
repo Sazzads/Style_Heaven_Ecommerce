@@ -1,14 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import useAllItems from '../../../../hooks/useAllItems';
 import CategoryCard from './CategoryCard';
+import UseAcceptProducts from '../../../../hooks/UseAcceptProducts';
 
 const OrderCategory = () => {
     const { category } = useParams()
     console.log(category);
-    const [allItems] = useAllItems();
-    console.log(allItems);
-    const orderItems = allItems.filter(item => item.category === category)
+    const [acceptProducts] = UseAcceptProducts();
+    console.log(acceptProducts);
+    const orderItems = acceptProducts.filter(item => item.category === category)
     console.log(orderItems);
 
     return (

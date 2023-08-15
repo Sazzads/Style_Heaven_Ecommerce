@@ -86,6 +86,17 @@ async function run() {
             next()
 
         }
+        //verify seller
+        const verifyAdminSeller = async (req, res, next) => {
+            const email = req.decoded.email;
+            const query = { email: email }
+            const user = await usersCollection.findOne(query)
+            if (user?.role !== 'admin' && user?.role !== 'seller') {
+                return res.status(403).send({ error: true, message: 'forbidden message' })
+            }
+            next()
+
+        }
 
         /*---------------------------------------------
         --------------product related api------------- 
@@ -132,6 +143,7 @@ async function run() {
                     photo: saveProduct.photoUrl,
                     price: saveProduct.price,
                     email: saveProduct.email,
+                    quantity: saveProduct.quantity,
                 }
             }
             const result = await productCollection.updateOne(filter, product, options);
@@ -140,11 +152,49 @@ async function run() {
         })
 
         //dellete products
-        app.delete('/products/:id', verifyJWT, verifySeller, async (req, res) => {
+        app.delete('/products/:id', verifyJWT, verifyAdminSeller, async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
             const result = await productCollection.deleteOne(query)
             res.send(result)
+        })
+        //approved or reject product
+        app.put("/productstat/:id", async (req, res) => {
+            const id = req.params.id;
+            const newStatus = req.body.status;
+
+            const filter = { _id: new ObjectId(id) };
+            const updatedStatus = {
+                $set: {
+                    status: newStatus // Update the role field with the new role value
+                }
+            };
+            const options = { upsert: true };
+            const result = await productCollection.updateOne(filter, updatedStatus, options);
+            res.send(result)
+        });
+        //feedback product
+        app.put('/productfeedback/:id', async (req, res) => {
+            const id = req.params.id;
+            const feedback = req.body;
+            // console.log(id, feedback);
+            const filter = { _id: new ObjectId(id) }
+            options = { upsert: true }
+            const updatedFeedback = {
+                $set: {
+                    feedback: feedback.feedback
+                }
+            }
+            const result = await productCollection.updateOne(filter, updatedFeedback, options)
+            res.send(result)
+        })
+        //get approve products 
+        app.get(('/productsapproved/:text'), async (req, res) => {
+            // console.log(req.params.text);
+            if (req.params.text == 'approved') {
+                const result = await productCollection.find({ status: req.params.text }).toArray()
+                return res.send(result)
+            }
         })
 
 

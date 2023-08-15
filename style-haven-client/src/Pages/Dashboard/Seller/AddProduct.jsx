@@ -1,35 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
-import { Helmet } from 'react-helmet-async';
+import React from 'react';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
-import useAuth from '../../hooks/useAuth';
-import { useQuery } from '@tanstack/react-query';
-
-const EditProduct = () => {
-    const navigate = useNavigate()
-    //--------------------
-    //get specific product ------
-    //-----------------------------
-    const { id } = useParams()
-    const [axiosSecure] = useAxiosSecure()
-    const { data: data = [], refetch } = useQuery(['product'], async () => {
-        try {
-            const response = await fetch(`http://localhost:5000/product/${id}`);
-            const data = await response.json();
-            return data; // Return the data to the useQuery hook
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            return []; // Return an empty array in case of an error
-        }
-    });
-
-    //------------------------
-    //update product----------------
-    //------------------------
-    const { user } = useAuth()
+import { Helmet } from 'react-helmet-async';
+const AddProduct = () => {
+    const { user } = useAuth();
     const { email } = user
+    const [axiosSecure] = useAxiosSecure()
     const img_Hosting_token = import.meta.env.VITE_IMG_UPLOAD_TOKEN
     // console.log(img_Hosting_token);
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
@@ -48,33 +27,26 @@ const EditProduct = () => {
                     const imgURL = imgResponse.data.display_url;
                     const newdata = data;
                     newdata.image = imgURL
-                    const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price), category: data.category, details: data.details }
-
+                    const status = "pending";
+                    const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price), category: data.category, quantity:data.quantity, details: data.details, status }
+                    // console.log(saveProduct);
                     //store product info into db 
-                    console.log(saveProduct);
-                    fetch(`http://localhost:5000/product/${id}`, {
-                        method: 'PUT',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(saveProduct)
-                    })
-                        .then(res => res.json())
+                    axiosSecure.post('/product', saveProduct)
                         .then(data => {
-                            // console.log(data);
-                            if (data.modifiedCount) {
+                            // console.log('after posing item', data.data);
+                            if (data.data.insertedId) {
+                                // reset() //TODO-uncomment reset()
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
-                                    title: 'Your Product has been updated',
+                                    title: 'Your work has been saved',
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
-
                             }
-                            navigate("/dashboard/managepreoducts")
+
                         })
-                    //------------------------------------
+
 
 
                 }
@@ -85,30 +57,17 @@ const EditProduct = () => {
     return (
         <div>
             <Helmet>
-                <title>StyleHeaven || Update product</title>
+                <title>StyleHeaven || Add product</title>
             </Helmet>
             <h2 className='text-center text-3xl mt-10'>Add a New Product</h2>
-            <div className=''>
-                <div className=" border-2 mx-16 my-10 px-16 py-10 shadow-2xl">
-                    <div className="flex justify-around items-center">
-                        <img src={data[0]?.photoUrl} className="w-[25%] h-[25%] rounded-lg shadow-2xl" />
-                        <div>
-                            <h1 className="text-3xl font-bold">Product Name: {data[0]?.name}</h1>
-                            <p className="py-1 text-lg"> Product Details: {data[0]?.details}</p>
-                            <p className="py-1 text-lg">Product Category: {data[0]?.category}</p>
-                            <p className="py-1 text-lg">Product Price: ${data[0]?.price}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div className='p-10 '>
-                <form onSubmit={handleSubmit(onSubmit)} className="card-body shadow-xl">
+                <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <div className='grid md:grid-cols-2 gap-10'>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Product Name</span>
                             </label>
-                            <input  {...register("name", { required: true })} type="text" placeholder={data[0]?.name} className="input input-bordered" />
+                            <input  {...register("name", { required: true })} type="text" placeholder="name" className="input input-bordered" />
                             {errors.name && <span className='text-red-600'>This field is required</span>}
                         </div>
 
@@ -123,14 +82,14 @@ const EditProduct = () => {
                             <label className="label">
                                 <span className="label-text">Price</span>
                             </label>
-                            <input  {...register("price", { required: true })} type="text" placeholder={data[0]?.price} className="input input-bordered" />
+                            <input  {...register("price", { required: true })} type="text" placeholder="price" className="input input-bordered" />
                             {errors.name && <span className='text-red-600'>This field is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Details</span>
                             </label>
-                            <input  {...register("details", { required: true })} type="text" placeholder={data[0]?.details} className="input input-bordered" />
+                            <input  {...register("details", { required: true })} type="text" placeholder="Detail" className="input input-bordered" />
                             {errors.name && <span className='text-red-600'>This field is required</span>}
                         </div>
                         <div className="form-control">
@@ -149,14 +108,28 @@ const EditProduct = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text">product Quantity</span>
+                            </label>
+                            <input  {...register("quantity", { required: true })} type="text" placeholder="product Quantity" className="input input-bordered" />
+                            {errors.name && <span className='text-red-600'>This field is required</span>}
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text">Picture</span>
                             </label>
                             <input  {...register("image")} type="file" className="file-input file-input-bordered" />
+
                         </div>
+
                     </div>
 
+
+
+
+
                     <div className="form-control mt-6">
-                        <input type="submit" value="Update Product" className="shadow-xl btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black w-1/2 mx-auto" />
+                        <input type="submit" value="Add to Product" className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black w-1/2 mx-auto" />
                     </div>
                 </form>
             </div>
@@ -164,4 +137,4 @@ const EditProduct = () => {
     );
 };
 
-export default EditProduct;
+export default AddProduct;

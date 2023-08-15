@@ -5,18 +5,18 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import menPic from "../../../../assets/men.png"
 import womenPic from "../../../../assets//women.png"
 import kidPic from "../../../../assets/kids.png"
-import useAllItems from '../../../../hooks/useAllItems';
 import OrderTab from './OrderTab';
 import { Link } from 'react-router-dom';
+import UseAcceptProducts from '../../../../hooks/UseAcceptProducts';
 const Category = () => {
     const [tabIndex, setTabIndex] = useState(0)
-    const [allItems] = useAllItems();
-    console.log(allItems);
-    const mens = allItems.filter(item => item.category === 'mens')
+    const [acceptProducts] = UseAcceptProducts();
+    console.log(acceptProducts);
+    const mens = acceptProducts.filter(item => item.category === 'mens')
     const newMens = mens.slice(0, 6)
-    const womens = allItems.filter(item => item.category === 'womens')
+    const womens = acceptProducts.filter(item => item.category === 'womens')
     const newWomens = womens.slice(0, 6)
-    const kids = allItems.filter(item => item.category === 'kids')
+    const kids = acceptProducts.filter(item => item.category === 'kids')
     const newKids = kids.slice(0, 6)
 
     return (

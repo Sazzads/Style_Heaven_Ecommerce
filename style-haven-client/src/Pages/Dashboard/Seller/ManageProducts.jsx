@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 import { FaEdit, FaEye, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
@@ -60,6 +60,9 @@ const ManageProducts = () => {
                             <th>Product Name</th>
                             <th>Seller Email</th>
                             <th>Product Price</th>
+                            <th>Product Quantity</th>
+                            <th>Product Status</th>
+                            <th>Product Feedback</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -80,6 +83,9 @@ const ManageProducts = () => {
                                     <td>{item.name}</td>
                                     <td>{item.email}</td>
                                     <td>$ {item.price}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>{item?.status}</td>
+                                    <td>{item?.feedback}</td>
                                     <th>
                                         <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
                                             <label tabIndex={0} className="text-blue-600"> Action</label>

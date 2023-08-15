@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../Pages/Shared/NavBar/Navbar';
-import { FaCashRegister, FaHome, FaHouseUser, FaShoppingCart, FaTshirt, FaUserAlt, FaUserTie, FaWallet } from 'react-icons/fa';
+import { FaCashRegister, FaDollarSign, FaHome, FaHouseUser, FaShoppingCart, FaTshirt, FaUserAlt, FaUserTie, FaWallet } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import useAdmin from '../hooks/useAdmin';
 import useSeller from '../hooks/useSeller';
@@ -36,6 +36,7 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/users'><FaUserAlt></FaUserAlt>Users </NavLink></li>
                                 <li><NavLink to='/dashboard/managesellerproduct'><FaTshirt></FaTshirt>Manage Product </NavLink></li>
                                 <li><NavLink to='/dashboard/manageOrder'><FaCashRegister></FaCashRegister>Manage Order </NavLink></li>
+                                <li><NavLink to='/dashboard/paymentHistoryall'><FaDollarSign></FaDollarSign>All Payment History </NavLink></li>
                             </>
                         }
                         {isSeller && <>

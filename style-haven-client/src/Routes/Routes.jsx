@@ -11,10 +11,11 @@ import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import Users from "../Layout/Users";
 import AdminRoute from "./AdminROute";
 import SellerRoute from "./SellerRoute";
-import AddProduct from "../Pages/Dashboard/AddProduct";
-import ManageProducts from "../Pages/Dashboard/ManageProducts";
-import EditProduct from "../Pages/Dashboard/EditProduct";
 import ManageSellerProduct from "../Pages/Dashboard/Admin/ManageSellerProduct";
+import ApprovedProducts from "../Pages/Dashboard/Seller/ApprovedProducts";
+import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
+import ManageProducts from "../Pages/Dashboard/Seller/ManageProducts";
+import EditProduct from "../Pages/Dashboard/Seller/EditProduct";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: 'editproduct/:id',
         element: <SellerRoute><EditProduct></EditProduct></SellerRoute>
+      },
+      {
+        path: 'approvedproducts',
+        element: <SellerRoute><ApprovedProducts></ApprovedProducts></SellerRoute>
       },
     ]
   }
