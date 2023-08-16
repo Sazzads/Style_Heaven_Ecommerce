@@ -16,6 +16,7 @@ import ApprovedProducts from "../Pages/Dashboard/Seller/ApprovedProducts";
 import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
 import ManageProducts from "../Pages/Dashboard/Seller/ManageProducts";
 import EditProduct from "../Pages/Dashboard/Seller/EditProduct";
+import Payment from "../Pages/Dashboard/Customer/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: 'mycart',
         element: <MyCart></MyCart>
+      },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
       },
       {
         path: 'users',

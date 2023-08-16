@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     const [cart, refetch] = useCart()
@@ -160,7 +161,7 @@ const MyCart = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <button className='btn btn-xs '>Pay</button>
+                    <Link to={`/dashboard/payment`} className='btn btn-xs '>Pay</Link>
                 </div>
             </div>
         </>
