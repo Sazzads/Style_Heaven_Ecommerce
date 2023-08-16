@@ -5,17 +5,17 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../../../hooks/useCart';
 
 const CategoryCard = ({ item }) => {
-    const { name, photoUrl:image, price, recipe, _id } = item
+    const { name, photoUrl: image, price, recipe, _id,quantity,details } = item
     // console.log(item);
 
     const { user } = useContext(AuthContext)
-    const [,refetch] = useCart()
+    const [, refetch] = useCart()
     const location = useLocation()
     const navigate = useNavigate()
     const handleAddTocart = item => {
         console.log(item);
         if (user && user.email) {
-            const cartItem = { itemId: _id, name, image, price, email: user.email }
+            const cartItem = { itemId: _id, name, image, price, quantity, email: user.email }
             fetch('http://localhost:5000/carts', {
                 method: "POST",
                 headers: {
@@ -44,6 +44,7 @@ const CategoryCard = ({ item }) => {
                 <p className='absolute right-0 mr-4 mt-4'>Price:${price}</p>
                 <div className="card-body ">
                     <h2 className="card-title">{name}</h2>
+                    <h2 className="">Details:{details}</h2>
 
                     <p>{recipe}</p>
                     <div className="card-actions justify-end">

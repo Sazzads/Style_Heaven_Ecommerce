@@ -201,13 +201,32 @@ async function run() {
         /*------------------------------------------------
          ---------cart collection related api------------- 
          -----------------------------------------------*/
-        //add cart
+        // add cart
         app.post('/carts', async (req, res) => {
             const item = req.body;
             // console.log(item);
             const result = await cartCollection.insertOne(item)
             res.send(result);
         })
+        //newss test
+        app.put("/updatecart/:id", async (req, res) => {
+            const id = req.params.id;
+            const newquantity = req.body.productquantity;
+            console.log(newquantity);
+
+            const filter = { _id: new ObjectId(id) };
+            const updatedquantity = {
+                $set: {
+                    cartquantity: newquantity // Update the role field with the new role value
+                }
+            };
+            const options = { upsert: true };
+            const result = await cartCollection.updateOne(filter, updatedquantity, options);
+            res.send(result)
+        });
+
+
+
         //get cart data
         app.get('/carts', verifyJWT, async (req, res) => {
             const email = req.query.email;

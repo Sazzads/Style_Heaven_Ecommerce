@@ -125,6 +125,7 @@ const ManageSellerProduct = () => {
                             <th>Product Name</th>
                             <th>Seller Email</th>
                             <th>Product Price</th>
+                            <th>Product Quantity</th>
                             <th>Product Details</th>
                             <th>status</th>
                             <th>Feedback</th>
@@ -148,6 +149,7 @@ const ManageSellerProduct = () => {
                                     <td >{item.name}</td>
                                     <td >{item.email}</td>
                                     <td >$ {item.price}</td>
+                                    <td >{item.quantity}</td>
                                     <td >{item.details}</td>
                                     <td >{item.status}</td>
                                     <td >{item.feedback}</td>

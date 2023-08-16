@@ -1,15 +1,64 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useCart from '../../../hooks/useCart';
 import { Helmet } from 'react-helmet-async';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const MyCart = () => {
     const [cart, refetch] = useCart()
-    const total = cart.reduce((sum, item) => item.price + sum, 0)
-    const vatTotal = total * 7 / 100 + total
-    // console.log(vatTotal);
-    
+    const [counts, setCounts] = useState({}); // Use an object to store counts for each item
+    const [axiosSecure] = useAxiosSecure()
+
+    useEffect(() => {
+        // Initialize counts object with current cart quantities
+        const initialCounts = {};
+        cart.forEach(item => {
+            initialCounts[item._id] = item.cartquantity || 1;
+        });
+        setCounts(initialCounts);
+    }, [cart]);
+
+    // const total = cart.reduce((sum, item) => item.price*item.cartquantity + sum, 0);
+    let total = cart.reduce((sum, item) => item.price * (counts[item._id] || 0) + sum, 0);
+
+    const vatTotal = (total * 7 / 100 + total).toFixed(2);
+
+    const handleQuantityUpdate = (item, newQuantity, successMessage) => {
+        const productquantity = {
+            productquantity: newQuantity
+        };
+
+        axiosSecure.put(`/updatecart/${item._id}`, productquantity)
+            .then(res => {
+                console.log(res.data);
+                refetch();
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: successMessage,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    const increaseCount = (item) => {
+        const updatedCount = counts[item._id] + 1;
+        setCounts(prevCounts => ({ ...prevCounts, [item._id]: updatedCount }));
+        handleQuantityUpdate(item, updatedCount, `${updatedCount} Products added to cart`);
+    };
+
+    const decreaseCount = (item) => {
+        const updatedCount = Math.max(counts[item._id] - 1, 1);
+        setCounts(prevCounts => ({ ...prevCounts, [item._id]: updatedCount }));
+        handleQuantityUpdate(item, updatedCount, `${updatedCount} Products added to cart`);
+    };
+
+
     const handleDellete = (item) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -32,7 +81,6 @@ const MyCart = () => {
                             )
                         }
                     })
-
             }
         })
     }
@@ -41,7 +89,7 @@ const MyCart = () => {
             <Helmet>
                 <title>StyleHeaven || Cart</title>
             </Helmet>
-            <div className='grid grid-cols-2'>
+            <div className='grid md:grid-cols-2'>
                 <div className='card'>
                     {
                         cart.map((item, index) =>
@@ -58,9 +106,9 @@ const MyCart = () => {
                                             <div>
                                                 <p>Black/xl</p>
                                                 <div className='flex justify-center gap-2'>
-                                                    <div className='btn btn-xs'>+</div>
-                                                    <div>0</div>
-                                                    <div className='btn btn-xs'>-</div>
+                                                    <div onClick={() => increaseCount(item)} className='btn btn-xs'>+</div>
+                                                    <div>{item.cartquantity || 0}</div>
+                                                    <div onClick={() => decreaseCount(item)} className='btn btn-xs'>-</div>
                                                 </div>
                                             </div>
                                             <button onClick={() => handleDellete(item)} className='btn'><FaTrashAlt></FaTrashAlt></button>
@@ -70,8 +118,8 @@ const MyCart = () => {
                             </div>)
                     }
                 </div>
-                <div className='mt-10 h-96 w-96 bg-pink-300 mx-auto p-5'>
-                    <table>
+                <div className='mt-10 h-96 w-96 bg-pink-300 mx-auto p-5 md:fixed md:right-40'>
+                    <table >
                         <thead>
                             <tr>
                                 <th>Total Items:</th>
@@ -85,8 +133,16 @@ const MyCart = () => {
                                 <td>${total}</td>
                             </tr>
                             <tr>
-                                <td>Tax: <span><small>(7%)</small></span></td>
-                                <td>${total * 7 / 100} </td>
+                                <td>VAT: <span><small> (7%)</small></span></td>
+                                <td>${(total * 7 / 100).toFixed(2)} </td>
+                            </tr>
+                            <tr>
+                                <td>Address: </td>
+                                <td>
+                                    <form>
+                                        <input type="text" />
+                                    </form>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -96,7 +152,7 @@ const MyCart = () => {
                         <tbody>
                             <tr>
                                 <td>Total:</td>
-                                <td>${total * 7 / 100 + total}</td>
+                                <td>${vatTotal}</td>
                             </tr>
                         </tbody>
                     </table>
