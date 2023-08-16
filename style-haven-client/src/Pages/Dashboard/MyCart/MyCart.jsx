@@ -21,8 +21,12 @@ const MyCart = () => {
 
     // const total = cart.reduce((sum, item) => item.price*item.cartquantity + sum, 0);
     let total = cart.reduce((sum, item) => item.price * (counts[item._id] || 0) + sum, 0);
+    total = parseFloat(total.toFixed(2))
+    // console.log(typeof(total));
 
-    const vatTotal = (total * 7 / 100 + total).toFixed(2);
+    let vatTotal = (total * 7 / 100 + total)
+    vatTotal = parseFloat(vatTotal.toFixed(2))
+    // console.log(vatTotal);
 
     const handleQuantityUpdate = (item, newQuantity, successMessage) => {
         const productquantity = {

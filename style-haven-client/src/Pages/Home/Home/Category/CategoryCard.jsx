@@ -5,16 +5,22 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../../../hooks/useCart';
 
 const CategoryCard = ({ item }) => {
-    const { name, photoUrl: image, price, recipe, _id,quantity,details } = item
+    const { name, photoUrl: image, price, recipe, _id, quantity, details } = item
     // console.log(item);
 
     const { user } = useContext(AuthContext)
-    const [, refetch] = useCart()
+    const [cart, refetch] = useCart()
     const location = useLocation()
     const navigate = useNavigate()
     const handleAddTocart = item => {
-        console.log(item);
-        if (user && user.email) {
+        // console.log(item);
+        // Item is already in the cart, show an alert
+        const itemInCart = cart.find(cartItem => cartItem.itemId === _id);
+        if (itemInCart) {
+
+            toast.warning("Item is already in the cart");
+        }
+        else if (user && user.email) {
             const cartItem = { itemId: _id, name, image, price, quantity, email: user.email }
             fetch('http://localhost:5000/carts', {
                 method: "POST",
