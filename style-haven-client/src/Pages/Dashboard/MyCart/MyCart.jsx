@@ -10,7 +10,7 @@ const MyCart = () => {
     const [cart, refetch] = useCart()
     const [counts, setCounts] = useState({}); // Use an object to store counts for each item
     const [axiosSecure] = useAxiosSecure()
-
+console.log(cart);
     useEffect(() => {
         // Initialize counts object with current cart quantities
         const initialCounts = {};
@@ -31,8 +31,8 @@ const MyCart = () => {
 
     const handleQuantityUpdate = (item, newQuantity, successMessage) => {
         const productquantity = {
-            productquantity: newQuantity
-        };
+            productquantity: parseInt(newQuantity),
+        }
 
         axiosSecure.put(`/updatecart/${item._id}`, productquantity)
             .then(res => {
@@ -112,7 +112,7 @@ const MyCart = () => {
                                                 <p>Black/xl</p>
                                                 <div className='flex justify-center gap-2'>
                                                     <div onClick={() => increaseCount(item)} className='btn btn-xs'>+</div>
-                                                    <div>{item.cartquantity || 0}</div>
+                                                    <div>{item.cartquantity || 1}</div>
                                                     <div onClick={() => decreaseCount(item)} className='btn btn-xs'>-</div>
                                                 </div>
                                             </div>
