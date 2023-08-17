@@ -16,12 +16,14 @@ const CategoryCard = ({ item }) => {
         // console.log(item);
         // Item is already in the cart, show an alert
         const itemInCart = cart.find(cartItem => cartItem.itemId === _id);
+        const cartquantity=1
         if (itemInCart) {
 
             toast.warning("Item is already in the cart");
         }
+        
         else if (user && user.email) {
-            const cartItem = { itemId: _id, name, image, price, quantity, email: user.email }
+            const cartItem = { itemId: _id, name, image, price, quantity, email: user.email,cartquantity }
             fetch('http://localhost:5000/carts', {
                 method: "POST",
                 headers: {

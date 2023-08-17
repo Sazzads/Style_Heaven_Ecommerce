@@ -1,14 +1,14 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
-import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
-import useAuth from '../../../../../hooks/useAuth';
-import useCart from '../../../../../hooks/useCart';
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import useAuth from "../../../../hooks/useAuth";
+import useCart from "../../../../hooks/useCart";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
+
 
 const CheckoutForm = ({ price }) => {
     const { user } = useAuth()
     const [cart, refetch] = useCart()
     // console.log(price);
-    console.log(cart);
     const stripe = useStripe()
     const elements = useElements()
     const [cardError, setcardError] = useState('')
@@ -17,13 +17,16 @@ const CheckoutForm = ({ price }) => {
     const [clientSecret, setClientSecret] = useState('')
     const [trxID, setTrxId] = useState('')
 
+    // console.log(cart);
+    // console.log(cart[0].email,cart[0].courseId,cart[0].seat);
     useEffect(() => {
         if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
-                .then(res => {
-                    // console.log(res.data.clientSecret);
-                    setClientSecret(res.data.clientSecret)
-                })
+            .then(res => {
+                console.log(res.data.clientSecret);
+                setClientSecret(res.data.clientSecret)
+            })
+
         }
     }, [price, axiosSecure]);
 
@@ -37,10 +40,10 @@ const CheckoutForm = ({ price }) => {
             return
         }
         // Use your card Element with other Stripe.js APIs
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
-            card,
-        });
+            card
+        })
         if (error) {
             console.log('[error]', error);
             setcardError(error.message)
@@ -52,23 +55,22 @@ const CheckoutForm = ({ price }) => {
             setcardError('')
         }
         setProcess(true)
-        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment
-            (
-                clientSecret,
-                {
-                    payment_method: {
-                        card: card,
-                        billing_details: {
-                            email: user?.email || "anonymous",
-                            name: user?.displayName || "anonymous",
-                        },
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        email: user?.email || 'unknown',
+                        name: user?.displayName || 'anonymous'
                     },
-                }
-            );
+                },
+            },
+        );
         if (confirmError) {
             console.log(confirmError);
         }
-        // console.log(paymentIntent);
+        console.log(paymentIntent);
         setProcess(false)
         if (paymentIntent.status === 'succeeded') {
 
@@ -83,7 +85,13 @@ const CheckoutForm = ({ price }) => {
                 // items:cart.map(item=>item.name)
                 CartItems: cart.map(item => item._id),
                 productItems: cart.map(item => item.itemId),
-                delevaryStatus: "Delevary pending"
+                status: "Delevary pending"
+                // email: cart[0]?.email,
+                // courseId: cart[0].courseId,
+                // cartId: cart.map(data => data._id),
+                // seat: cart[0]?.seat,
+                // className: cart[0]?.className,
+                // image: cart[0]?.image,
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {
@@ -94,42 +102,9 @@ const CheckoutForm = ({ price }) => {
                     }
                 })
 
-            //update sold product
-
-            const updateSoldProduct = async (itemId, newSoldProduct) => {
-                try {
-                    const response = await fetch(`http://localhost:5000/paymentsprductupdate/${itemId}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(newSoldProduct)
-                    });
-
-                    const data = await response.json();
-                    return data;
-                } catch (error) {
-                    console.error('Error updating soldproduct on the client:', error);
-                    throw error;
-                }
-            };
-
-            // Iterate through the cart and update each item's soldproduct
-            for (const item of cart) {
-                const itemId = item.itemId;
-                const newSoldProduct = {
-                    newSoldProduct: parseInt(item.cartquantity, 10)
-                };
-
-                try {
-                    const result = await updateSoldProduct(itemId, newSoldProduct);
-                    console.log(`Soldproduct updated for item ${itemId}:`, result);
-                } catch (error) {
-                    console.error(`Error updating soldproduct for item ${itemId}:`, error);
-                }
-            }
-
-
+            // const sellproducts={
+            //     sellProductId:gc
+            // }
         }
 
     }

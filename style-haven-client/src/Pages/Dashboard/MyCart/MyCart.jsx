@@ -10,7 +10,7 @@ const MyCart = () => {
     const [cart, refetch] = useCart()
     const [counts, setCounts] = useState({}); // Use an object to store counts for each item
     const [axiosSecure] = useAxiosSecure()
-console.log(cart);
+// console.log(cart);
     useEffect(() => {
         // Initialize counts object with current cart quantities
         const initialCounts = {};
@@ -36,7 +36,7 @@ console.log(cart);
 
         axiosSecure.put(`/updatecart/${item._id}`, productquantity)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 refetch();
                 Swal.fire({
                     position: 'top-end',

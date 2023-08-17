@@ -4,7 +4,6 @@ const cors = require('cors')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const stripe = require("stripe")(process.env.PAYMENT_SECRET_KEY);
-
 const port = process.env.PORT || 5000;
 
 
@@ -258,17 +257,18 @@ async function run() {
         /* --------------------------------------------
         ------------payment related api----------------
         ---------------------------------------------- */
-        app.post('/create-payment-intent', async (req, res) => {
+        app.post('/create-payment-intent', verifyJWT, async (req, res) => {
             const { price } = req.body;
-            const amount = price * 100;
+            const amount = parseInt(price * 100);
             const paymentIntent = await stripe.paymentIntents.create({
                 amount: amount,
-                currency: "usd",
+                currency: 'usd',
                 payment_method_types: ['card']
             });
+
             res.send({
-                clientSecret: paymentIntent.client_secret,
-            });
+                clientSecret: paymentIntent.client_secret
+            })
         })
 
         //payment api
@@ -284,6 +284,22 @@ async function run() {
 
             res.send({ insertResult, deleteResult })
         })
+
+        //--------------------------
+        app.put('/paymentsprductupdate/:id', async (req, res) => {
+            const id = req.params.id;
+            const soldproduct = req.body.newSoldProduct; // Read the newSoldProduct from the request body
+            const filter = { _id: new ObjectId(id) };
+            
+            try {
+                const result = await productCollection.updateOne(filter, { $inc: { soldproduct: soldproduct } });
+                res.send(result);
+            } catch (error) {
+                console.error('Error updating soldproduct:', error);
+                res.status(500).send('Error updating soldproduct');
+            }
+        });
+        //-------------------------
 
         /*----------------------------------------------
         ----------users collection related api-------

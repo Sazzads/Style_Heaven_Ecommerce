@@ -11,7 +11,7 @@ import UseAcceptProducts from '../../../../hooks/UseAcceptProducts';
 const Category = () => {
     const [tabIndex, setTabIndex] = useState(0)
     const [acceptProducts] = UseAcceptProducts();
-    console.log(acceptProducts);
+    // console.log(acceptProducts);
     const mens = acceptProducts.filter(item => item.category === 'mens')
     const newMens = mens.slice(0, 6)
     const womens = acceptProducts.filter(item => item.category === 'womens')
