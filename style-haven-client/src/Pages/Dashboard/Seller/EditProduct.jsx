@@ -48,7 +48,7 @@ const EditProduct = () => {
                     const imgURL = imgResponse.data.display_url;
                     const newdata = data;
                     newdata.image = imgURL
-                    const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price),quantity:data.quantity, category: data.category, details: data.details }
+                    const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price),quantity:parseInt(data.quantity), category: data.category, details: data.details }
 
                     //store product info into db 
                     console.log(saveProduct);

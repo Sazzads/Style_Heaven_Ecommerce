@@ -95,6 +95,7 @@ const ManageSellerProduct = () => {
             });
 
     }
+
     return (
         <div className='mx-auto '>
             <input type="checkbox" id="my_modal_6" className="modal-toggle" />
@@ -134,38 +135,46 @@ const ManageSellerProduct = () => {
                     </thead>
                     <tbody className=''>
                         {
-                            allItems.map((item, index) =>
-                                <tr key={item._id}>
-                                    <td >{index + 1}</td>
-                                    <td >
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={item.photoUrl} alt="Avatar Tailwind CSS Component" />
+                            allItems.map((item, index) => {
+                                const statusClass =
+                                    item.status === 'approved' ? 'font-bold text-green-500' :
+                                        item.status === 'reject' ? 'font-bold text-red-500' :
+                                            item.status === 'pending' ? 'font-bold text-black' :
+                                                'font-bold';
+                                return (
+                                    <tr key={item._id}>
+                                        <td >{index + 1}</td>
+                                        <td >
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={item.photoUrl} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td >{item.name}</td>
-                                    <td >{item.email}</td>
-                                    <td >$ {item.price}</td>
-                                    <td >{item.quantity}</td>
-                                    <td >{item.details}</td>
-                                    <td >{item.status}</td>
-                                    <td >{item.feedback}</td>
-                                    <th>
-                                        <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
-                                            <label tabIndex={0} className="text-blue-600"> Action</label>
-                                            <ul tabIndex={0} className="dropdown-content z-[1] menu  rounded-box bg-slate-100 ">
-                                                <li><a className="text-blue-600"><FaEye></FaEye>View</a></li>
-                                                <li onClick={() => handleApproved(item)}><a className="text-green-600"><FaCheckCircle></FaCheckCircle>Approved</a></li>
-                                                <li onClick={() => handleReject(item)}><a className="text-yellow-500"><FaTimesCircle></FaTimesCircle>Reject</a></li>
-                                                <li onClick={() => setId(item._id)} htmlFor=""><label htmlFor="my_modal_6"><a className="flex gap-2 items-center"><FaRegNewspaper></FaRegNewspaper>Feedback</a></label></li>
-                                                <li onClick={() => handleDellete(item)}><a className="text-red-600"><FaTrashAlt></FaTrashAlt> Dellete</a></li>
-                                            </ul>
-                                        </div>
-                                    </th>
-                                </tr>)
+                                        </td>
+                                        <td >{item.name}</td>
+                                        <td >{item.email}</td>
+                                        <td >$ {item.price}</td>
+                                        <td >{item.quantity}</td>
+                                        <td >{item.details}</td>
+                                        <td className={`font-bold ${statusClass}`}>{item.status}</td>
+                                        <td >{item.feedback}</td>
+                                        <th>
+                                            <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
+                                                <label tabIndex={0} className="text-blue-600"> Action</label>
+                                                <ul tabIndex={0} className="dropdown-content z-[1] menu  rounded-box bg-slate-100 ">
+                                                    <li><a className="text-blue-600"><FaEye></FaEye>View</a></li>
+                                                    <li onClick={() => handleApproved(item)}><a className="text-green-600"><FaCheckCircle></FaCheckCircle>Approved</a></li>
+                                                    <li onClick={() => handleReject(item)}><a className="text-yellow-500"><FaTimesCircle></FaTimesCircle>Reject</a></li>
+                                                    <li onClick={() => setId(item._id)} htmlFor=""><label htmlFor="my_modal_6"><a className="flex gap-2 items-center"><FaRegNewspaper></FaRegNewspaper>Feedback</a></label></li>
+                                                    <li onClick={() => handleDellete(item)}><a className="text-red-600"><FaTrashAlt></FaTrashAlt> Dellete</a></li>
+                                                </ul>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                )
+                            })
                         }
 
                     </tbody>

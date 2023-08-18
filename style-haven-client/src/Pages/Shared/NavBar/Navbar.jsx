@@ -28,8 +28,9 @@ const Navbar = () => {
         <li><Link>Sale</Link></li>
     </>
     return (
-        <div className='max-w-screen-xl mx-auto'>
-            <div className="navbar bg-base-100 ">
+        // max-w-screen-xl mx-auto 
+        <div className=''>
+            <div className="navbar bg-[#e84393] md:px-44 text-white">
                 <div className="navbar-start">
                     <div className="dropdown ">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -58,7 +59,7 @@ const Navbar = () => {
                         </label>
                         <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-36 bg-base-100 shadow">
                             <div className="card-body">
-                                <span className="font-bold text-lg">{cart.length || 0} Items</span>
+                                <span className="font-bold text-lg text-black">{cart.length || 0} Items</span>
                                 <span className="text-info">Subtotal: ${total}</span>
                                 <div className="card-actions">
                                     <Link to='/dashboard/mycart' className="px-5 py-2 bg-purple-800 rounded-lg flex items-center hover:bg-purple-500">View cart</Link>
@@ -67,7 +68,7 @@ const Navbar = () => {
                         </div>
                     </div>
                     {/* profile pic  */}
-                    <div className="dropdown dropdown-end">
+                    <div className="dropdown dropdown-end text-black">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 {user ? <img referrerPolicy='no-referrer' src={user?.photoURL} /> : <div className='text-3xl p-1'><FaUserAlt></FaUserAlt></div>}

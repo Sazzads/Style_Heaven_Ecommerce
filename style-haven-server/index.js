@@ -285,12 +285,12 @@ async function run() {
             res.send({ insertResult, deleteResult })
         })
 
-        //--------------------------
+        //payment update
         app.put('/paymentsprductupdate/:id', async (req, res) => {
             const id = req.params.id;
             const soldproduct = req.body.newSoldProduct; // Read the newSoldProduct from the request body
             const filter = { _id: new ObjectId(id) };
-            
+
             try {
                 const result = await productCollection.updateOne(filter, { $inc: { soldproduct: soldproduct } });
                 res.send(result);
@@ -299,7 +299,13 @@ async function run() {
                 res.status(500).send('Error updating soldproduct');
             }
         });
-        //-------------------------
+        //payment history
+        app.get("/paymenthistory/:email", async (req, res) => {
+            const email = req.query.email;
+            // console.log(req.params.email);
+            const result = await paymentCollection.find({ email: req.params.email }).toArray()
+            res.send(result)
+        })
 
         /*----------------------------------------------
         ----------users collection related api-------

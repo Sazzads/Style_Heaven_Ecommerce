@@ -28,7 +28,7 @@ const AddProduct = () => {
                     const newdata = data;
                     newdata.image = imgURL
                     const status = "pending";
-                    const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price), category: data.category, quantity:data.quantity, details: data.details, status }
+                    const saveProduct = { name: data.name, email: data.email, photoUrl: data.image, price: parseFloat(data.price), category: data.category, quantity:parseInt(data.quantity), details: data.details, status }
                     // console.log(saveProduct);
                     //store product info into db 
                     axiosSecure.post('/product', saveProduct)

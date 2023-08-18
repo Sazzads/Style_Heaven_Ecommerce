@@ -68,8 +68,14 @@ const ManageProducts = () => {
                     </thead>
                     <tbody>
                         {
-                            data.map((item, index) =>
-                                <tr key={item._id}>
+                            data.map((item, index) =>{
+                                const statusClass =
+                                item.status === 'approved' ? 'font-bold text-green-500' :
+                                    item.status === 'reject' ? 'font-bold text-red-500' :
+                                        item.status === 'pending' ? 'font-bold text-black' :
+                                            'font-bold';
+                                return(
+                                    <tr key={item._id}>
                                     <td>{index + 1}</td>
                                     <td>
                                         <div className="flex items-center space-x-3">
@@ -84,7 +90,7 @@ const ManageProducts = () => {
                                     <td>{item.email}</td>
                                     <td>$ {item.price}</td>
                                     <td>{item.quantity}</td>
-                                    <td>{item?.status}</td>
+                                    <td className={`font-bold ${statusClass}`}>{item.status}</td>
                                     <td>{item?.feedback}</td>
                                     <th>
                                         <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
@@ -96,7 +102,9 @@ const ManageProducts = () => {
                                             </ul>
                                         </div>
                                     </th>
-                                </tr>)
+                                </tr>
+                                )
+                            })
                         }
 
                     </tbody>

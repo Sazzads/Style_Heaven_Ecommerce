@@ -1,4 +1,4 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+/* import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import useAuth from "../../../../hooks/useAuth";
 import useCart from "../../../../hooks/useCart";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -137,4 +137,4 @@ const CheckoutForm = ({ price }) => {
     );
 };
 
-export default CheckoutForm;
+export default CheckoutForm; */

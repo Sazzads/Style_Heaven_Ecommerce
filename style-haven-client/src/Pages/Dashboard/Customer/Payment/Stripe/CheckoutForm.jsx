@@ -8,7 +8,8 @@ const CheckoutForm = ({ price }) => {
     const { user } = useAuth()
     const [cart, refetch] = useCart()
     // console.log(price);
-    console.log(cart);
+    // console.log(cart);
+  
     const stripe = useStripe()
     const elements = useElements()
     const [cardError, setcardError] = useState('')
@@ -80,7 +81,7 @@ const CheckoutForm = ({ price }) => {
                 price,
                 date: new Date(),
                 quantity: cart.length,
-                // items:cart.map(item=>item.name)
+                names:cart.map(item=>item.name),
                 CartItems: cart.map(item => item._id),
                 productItems: cart.map(item => item.itemId),
                 delevaryStatus: "Delevary pending"

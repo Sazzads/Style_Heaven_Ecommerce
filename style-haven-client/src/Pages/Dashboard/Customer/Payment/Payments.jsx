@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/* import React, { useState } from 'react';
 import {FaCcStripe, FaMobileAlt } from 'react-icons/fa';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
@@ -41,4 +41,4 @@ const Payments = () => {
     );
 };
 
-export default Payments;
+export default Payments; */

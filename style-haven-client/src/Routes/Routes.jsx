@@ -17,6 +17,7 @@ import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
 import ManageProducts from "../Pages/Dashboard/Seller/ManageProducts";
 import EditProduct from "../Pages/Dashboard/Seller/EditProduct";
 import Payment from "../Pages/Dashboard/Customer/Payment/Payment";
+import PaymentHistory from "../Pages/Dashboard/Customer/Payment/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: 'payment',
         element: <Payment></Payment>
+      },
+      {
+        path: 'paymenthistory',
+        element: <PaymentHistory></PaymentHistory>
       },
       {
         path: 'users',
