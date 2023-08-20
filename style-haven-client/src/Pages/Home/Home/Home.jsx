@@ -2,7 +2,6 @@ import React from 'react';
 import Cover from './Cover';
 import Brand from './Brand';
 import { Helmet } from 'react-helmet-async';
-import AllItems from '../../AllItems/AllItems';
 import Category from './Category/Category';
 
 
@@ -20,7 +19,6 @@ const Home = () => {
                 <Category></Category>
             </div>
 
-            <AllItems></AllItems>
         </div>
     );
 };

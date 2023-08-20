@@ -51,7 +51,7 @@ const Dashboard = () => {
                             <li><NavLink to='/dashboard/'><FaHouseUser></FaHouseUser>Customer Home </NavLink></li>
                             <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>cart </NavLink></li>
                             <li><NavLink to='/dashboard/paymenthistory'><FaShoppingCart></FaShoppingCart>Payment History</NavLink></li>
-                            <li><NavLink to='/dashboard/manageProduct'><FaTshirt></FaTshirt>All Product </NavLink></li>
+                            <li><NavLink to='/allproducts'><FaTshirt></FaTshirt>All Product </NavLink></li>
                         </>}
 
                         <div className='divider'></div>

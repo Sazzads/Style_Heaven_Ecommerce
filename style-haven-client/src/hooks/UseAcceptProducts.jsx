@@ -10,7 +10,7 @@ const UseAcceptProducts = () => {
         }
     })
 
-    return [acceptProducts,refetch,, loading]
+    return [acceptProducts,refetch, loading]
 };
 
 export default UseAcceptProducts;

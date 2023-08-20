@@ -18,6 +18,7 @@ import ManageProducts from "../Pages/Dashboard/Seller/ManageProducts";
 import EditProduct from "../Pages/Dashboard/Seller/EditProduct";
 import Payment from "../Pages/Dashboard/Customer/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Customer/Payment/PaymentHistory";
+import AllProducts from "../Pages/Shared/AllProducts";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/allproducts',
+        element: <AllProducts></AllProducts>
       },
       {
         path: '/orderCategory/:category',
