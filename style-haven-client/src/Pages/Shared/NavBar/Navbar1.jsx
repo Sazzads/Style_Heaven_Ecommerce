@@ -5,7 +5,7 @@ import { FaAngleDown } from "react-icons/fa";
 const Navbar1 = () => {
     return (
         <div className=''>
-            <div className='h-[50px] bg-purple-500 flex items-center justify-around text-white'>
+            <div className='h-[50px] bg-[#2d3436] flex items-center justify-around text-white'>
                 <div>Support 00 33 169 7720</div>
                 <div>Free US shipping an all orders $100+ Learn more</div>
                 <div className=''>
