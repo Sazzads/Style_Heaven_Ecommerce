@@ -50,13 +50,14 @@ const PaymentHistory = () => {
                             <th>Price</th>
                             <th>Transiction Id</th>
                             <th>delevary Status</th>
+                            <th>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             histories.map((history, index) => {
                                 return (
-                                    <tr  key={history._id}>
+                                    <tr key={history._id}>
                                         <th >{index + 1}</th>
                                         <td >{formatDate(history.date)}</td>
                                         <td>
@@ -68,6 +69,7 @@ const PaymentHistory = () => {
                                         <td >{history.price}</td>
                                         <td>{history.trxID}</td>
                                         <td>{history.delevaryStatus}</td>
+                                        <td className='text-green-600'>{history?.paidStatus == true && 'Done'}</td>
                                     </tr>
                                 )
                             })

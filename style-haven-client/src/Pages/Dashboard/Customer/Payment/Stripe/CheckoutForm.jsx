@@ -84,7 +84,8 @@ const CheckoutForm = ({ price }) => {
                 names:cart.map(item=>item.name),
                 CartItems: cart.map(item => item._id),
                 productItems: cart.map(item => item.itemId),
-                delevaryStatus: "Delevary pending"
+                delevaryStatus: "Delevary pending",
+                paidStatus:true
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {

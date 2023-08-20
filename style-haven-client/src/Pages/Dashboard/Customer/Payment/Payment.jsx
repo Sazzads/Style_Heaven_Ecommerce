@@ -6,10 +6,11 @@ import useCart from '../../../../hooks/useCart';
 import CheckoutForm from './Stripe/CheckoutForm';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import SslPayment from './SslPayment/SslPayment';
 
 const Payment = ({ counts }) => {
     const [cart, refetch] = useCart()
-    console.log(cart);
+    // console.log(cart);
     // let total = cart.reduce((sum, item) => item.price * parseInt(item.cartquantity) + sum, 0);
     // total = (total * 7 / 100 + total)
     // const price = parseFloat(total.toFixed(2))
@@ -30,7 +31,7 @@ const Payment = ({ counts }) => {
     }, 0);
     const price = parseFloat((total * 7 / 100 + total).toFixed(2))
   
-console.log(price);
+// console.log(price);
     // const stripPromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
     const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK)
     return (
@@ -50,7 +51,7 @@ console.log(price);
 
                 </TabPanel>
                 <TabPanel>
-                    <h2>Any content 2</h2>
+                    <SslPayment price={price}></SslPayment>
                 </TabPanel>
             </Tabs>
         </>
