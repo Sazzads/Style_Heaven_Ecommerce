@@ -23,7 +23,7 @@ const CategoryCard = ({ item }) => {
         }
 
         else if (user && user.email) {
-            const cartItem = { itemId: _id, name, image, price, quantity, email: user.email, soldproduct }
+            const cartItem = { itemId: _id, name, image, price, quantity,cartquantity, email: user.email, soldproduct }
             fetch('http://localhost:5000/carts', {
                 method: "POST",
                 headers: {

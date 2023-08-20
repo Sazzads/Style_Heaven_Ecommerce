@@ -16,6 +16,12 @@ const PaymentHistory = () => {
     }, [])
 
     console.log(histories);
+    const formatDate = (timestamp) => {
+        const date = new Date(timestamp);
+        const formattedDate = date.toLocaleDateString(); // Format the date part
+        const formattedTime = date.toLocaleTimeString(); // Format the time part
+        return `Date: ${formattedDate} Time:${formattedTime}`;
+    };
     // const { data: data = [], refetch } = useQuery(['paymenthistory'], async () => {
     //     try {
     //         const response = await fetch(`http://localhost:5000/paymenthistory/${user?.email}`);
@@ -28,7 +34,7 @@ const PaymentHistory = () => {
     //     }
     // });
     return (
-        <>
+        <div className='mx-10'>
             <div>
                 <h3 className="text-3xl text-center my-10">Payment Hisotry</h3>
             </div>
@@ -37,22 +43,22 @@ const PaymentHistory = () => {
                     {/* head */}
                     <thead className=''>
                         <tr>
-                            <th>Serial</th>
-                            <th>Date</th>
+                            <th >Serial</th>
+                            <th >Date</th>
                             <th>Products Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Transiction Id</th>
+                            <th>delevary Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             histories.map((history, index) => {
-
                                 return (
-                                    <tr key={history._id}>
+                                    <tr  key={history._id}>
                                         <th >{index + 1}</th>
-                                        <td >{history.date}</td>
+                                        <td >{formatDate(history.date)}</td>
                                         <td>
                                             {history.names.map((productName, nameIndex) => (
                                                 <div key={nameIndex}>{productName}</div>
@@ -61,6 +67,7 @@ const PaymentHistory = () => {
                                         <td>{history.quantity}</td>
                                         <td >{history.price}</td>
                                         <td>{history.trxID}</td>
+                                        <td>{history.delevaryStatus}</td>
                                     </tr>
                                 )
                             })
@@ -69,7 +76,7 @@ const PaymentHistory = () => {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 };
 
