@@ -19,6 +19,7 @@ import EditProduct from "../Pages/Dashboard/Seller/EditProduct";
 import Payment from "../Pages/Dashboard/Customer/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Customer/Payment/PaymentHistory";
 import AllProducts from "../Pages/Shared/AllProducts";
+import AllPaymentHistory from "../Pages/Dashboard/Admin/AllPaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: 'managesellerproduct',
         element: <AdminRoute><ManageSellerProduct></ManageSellerProduct></AdminRoute>
+      },
+      {
+        path: 'allPaymentshistory',
+        element: <AdminRoute><AllPaymentHistory></AllPaymentHistory></AdminRoute>
       },
       {
         path: 'addproduct',

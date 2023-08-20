@@ -37,7 +37,7 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/users'><FaUserAlt></FaUserAlt>Users </NavLink></li>
                                 <li><NavLink to='/dashboard/managesellerproduct'><FaTshirt></FaTshirt>Manage Product </NavLink></li>
                                 <li><NavLink to='/dashboard/manageOrder'><FaCashRegister></FaCashRegister>Manage Order </NavLink></li>
-                                <li><NavLink to='/dashboard/paymentHistoryall'><FaDollarSign></FaDollarSign>All Payment History </NavLink></li>
+                                <li><NavLink to='/dashboard/allPaymentshistory'><FaDollarSign></FaDollarSign>All Payment History </NavLink></li>
                             </>
                         }
                         {isSeller && <>

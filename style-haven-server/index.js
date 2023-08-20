@@ -392,6 +392,12 @@ async function run() {
             })
         })
 
+        //get all payment history
+        app.get("/allpaymenthistory", async (req, res) => {
+            const result = await paymentCollection.find().toArray()
+            res.send(result)
+        })
+
         /*----------------------------------------------
         ----------users collection related api-------
         ---------------------------------------------*/
