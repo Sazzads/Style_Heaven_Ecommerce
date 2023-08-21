@@ -25,7 +25,7 @@ const Navbar = () => {
         <li><Link>Kids</Link></li>
         <li><Link>Accessories</Link></li>
         <li><Link>Collections</Link></li>
-        <li><Link>Sale</Link></li>
+        <li><Link to='/allproducts'>Sale</Link></li>
     </>
     return (
         // max-w-screen-xl mx-auto 

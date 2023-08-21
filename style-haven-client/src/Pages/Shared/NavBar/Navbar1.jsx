@@ -6,7 +6,7 @@ const Navbar1 = () => {
     return (
         <div className=''>
             <div className='h-[50px] bg-[#2d3436] flex items-center justify-around text-white'>
-                <div>Support 00 33 169 7720</div>
+                <div>Support +88 01 733 4398 12</div>
                 <div>Free US shipping an all orders $100+ Learn more</div>
                 <div className=''>
                     <Link className='me-2'>Shipping</Link>

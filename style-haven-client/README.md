@@ -1,8 +1,36 @@
 # React + Vite
+admin 1 email and Pass:
+admin1@mail.com
+Admin@
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+admin2 email and Pass:
+admin2@mail.com
+Admin@
 
-Currently, two official plugins are available:
+admin3 email and Pass:
+admin3@mail.com
+Admin@
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+seller 1 email and Pass:
+seller1@mail.com
+Seller@
+
+seller2 email and Pass:
+seller2@mail.com
+Seller@
+
+seller3 email and Pass:
+seller3@mail.com
+Seller@
+
+customer 1 email and Pass:
+customer1@mail.com
+Customer@
+
+customer2 email and Pass:
+customer2@mail.com
+Customer@
+
+customer3 email and Pass:
+customer3@mail.com
+Customer@

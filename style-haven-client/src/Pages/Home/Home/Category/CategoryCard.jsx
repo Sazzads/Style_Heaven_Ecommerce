@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../providers/AuthProvider';
 import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -7,6 +7,7 @@ import useCart from '../../../../hooks/useCart';
 const CategoryCard = ({ item }) => {
     const { name, photoUrl: image, price, recipe, _id, quantity, details, soldproduct } = item
     // console.log(item);
+    const [isHovered, setIsHovered] = useState(false);
 
     const { user } = useContext(AuthContext)
     const [cart, refetch] = useCart()
@@ -23,7 +24,7 @@ const CategoryCard = ({ item }) => {
         }
 
         else if (user && user.email) {
-            const cartItem = { itemId: _id, name, image, price, quantity,cartquantity, email: user.email, soldproduct }
+            const cartItem = { itemId: _id, name, image, price, quantity, cartquantity, email: user.email, soldproduct }
             fetch('http://localhost:5000/carts', {
                 method: "POST",
                 headers: {
@@ -47,25 +48,31 @@ const CategoryCard = ({ item }) => {
     }
     return (
         <>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div
+                className="card w-80 bg-base-100 shadow-xl relative"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
                 <figure><img src={image} alt="Shoes" /></figure>
-                <p className='absolute right-0 mr-4 mt-4 bg-black bg-opacity-40 rounded-md text-white'>Price:${price}</p>
-                <div className="card-body ">
-                    <h2 className="card-title">{name}</h2>
-                    <h2 className="">Details:{details}</h2>
-
-                    <p>{recipe}</p>
-                    <div className="card-actions justify-end">
-                        <button
-                            onClick={() => handleAddTocart(item)}
-                            className="btn btn-outline border-0 border-b-4 mt-4 bg-pink-600"
-                            disabled={soldproduct >= quantity} // Disable if soldproduct >= quantity
-                        >
-                            <span className='text-white'>
-                                {soldproduct >= quantity ? 'Out of Stock' : 'Add to Cart'}
-                            </span>
-                        </button>
+                {isHovered && (
+                    <div className='absolute bg-black bg-opacity-40 text-white text-center top-0 bottom-0 left-0 right-0 rounded-2xl '>
+                        <div className='mt-60'>
+                            <h2 className="text-2xl uppercase mt-10">{name}</h2>
+                            <p className='mt-5'>Price:${price}</p>
+                            <h2 className="mt-5 px-5">Details:{details}</h2>
+                        </div>
                     </div>
+                )}
+                <div className="absolute -bottom-5 left-1/3">
+                    <button
+                        onClick={() => handleAddTocart(item)}
+                        className="btn btn-outline border-0 border-b-4 mt-4 bg-pink-600"
+                        disabled={soldproduct >= quantity}
+                    >
+                        <span className='text-white'>
+                            {soldproduct >= quantity ? 'Out of Stock' : 'Add to Cart'}
+                        </span>
+                    </button>
                 </div>
             </div>
         </>

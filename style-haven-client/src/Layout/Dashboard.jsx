@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import useAdmin from '../hooks/useAdmin';
 import useSeller from '../hooks/useSeller';
 import UseCustomer from '../hooks/UseCustomer';
+import Footer from '../Pages/Shared/Footer/Footer';
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin()
@@ -62,6 +63,7 @@ const Dashboard = () => {
 
                 </div>
             </div>
+            <Footer></Footer>
         </>
     );
 };
