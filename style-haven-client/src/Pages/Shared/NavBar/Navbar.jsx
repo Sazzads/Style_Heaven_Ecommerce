@@ -20,9 +20,9 @@ const Navbar = () => {
     }
     const navOptions = <>
         <li><Link className='me-1'>New</Link></li>
-        <li><Link>Tops</Link></li>
-        <li><Link>Bottoms</Link></li>
-        <li><Link>Kids</Link></li>
+        <li><Link to='/tops'>Tops</Link></li>
+        <li><Link to='/bottoms'>Bottoms</Link></li>
+        <li><Link to='/kids'>Kids</Link></li>
         <li><Link>Accessories</Link></li>
         <li><Link>Collections</Link></li>
         <li><Link to='/allproducts'>Sale</Link></li>

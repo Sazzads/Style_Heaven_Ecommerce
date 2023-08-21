@@ -199,8 +199,17 @@ async function run() {
         //get approve products 
         app.get(('/productsapproved/:text'), async (req, res) => {
             // console.log(req.params.text);
-            if (req.params.text == 'approved') {
+            if (req.params.text == 'tops') {
                 const result = await productCollection.find({ status: req.params.text }).toArray()
+                return res.send(result)
+            }
+        })
+
+        //get tops product
+        app.get(('/tops/:text'), async (req, res) => {
+            // console.log(req.params.text);
+            if (req.params.text == 'tops') {
+                const result = await productCollection.find({ category: req.params.text }).toArray()
                 return res.send(result)
             }
         })

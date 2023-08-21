@@ -20,6 +20,9 @@ import Payment from "../Pages/Dashboard/Customer/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/Customer/Payment/PaymentHistory";
 import AllProducts from "../Pages/Shared/AllProducts";
 import AllPaymentHistory from "../Pages/Dashboard/Admin/AllPaymentHistory";
+import Tops from "../Pages/Pages/Tops";
+import Bottoms from "../Pages/Pages/Bottoms";
+import Kids from "../Pages/Pages/Kids";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +41,18 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/tops',
+        element: <Tops></Tops>
+      },
+      {
+        path: '/bottoms',
+        element: <Bottoms></Bottoms>
+      },
+      {
+        path: '/kids',
+        element: <Kids></Kids>
       },
       {
         path: '/allproducts',
