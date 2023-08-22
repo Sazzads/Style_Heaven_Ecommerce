@@ -199,7 +199,7 @@ async function run() {
         //get approve products 
         app.get(('/productsapproved/:text'), async (req, res) => {
             // console.log(req.params.text);
-            if (req.params.text == 'tops') {
+            if (req.params.text == 'approved') {
                 const result = await productCollection.find({ status: req.params.text }).toArray()
                 return res.send(result)
             }

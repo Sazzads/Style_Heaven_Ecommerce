@@ -4,7 +4,7 @@ import CategoryCard from '../Home/Home/Category/CategoryCard';
 
 const AllProducts = () => {
     const [acceptProducts] = UseAcceptProducts();
-    // console.log(acceptProducts);
+    console.log(acceptProducts);
 
     return (
         <div className='max-w-screen-xl mx-auto my-10'>

@@ -13,4 +13,4 @@ const UseAcceptProducts = () => {
     return [acceptProducts,refetch, loading]
 };
 
-export default UseAcceptProducts;
+export default UseAcceptProducts; 

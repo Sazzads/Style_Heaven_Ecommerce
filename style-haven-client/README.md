@@ -8,12 +8,12 @@ admin2@mail.com
 Admin@
 
 admin3 email and Pass:
-c
+admin3@mail.com
 Admin@
 
 seller 1 email and Pass:
 seller1@mail.com
-seller1@mail.com
+Seller@
 
 seller2 email and Pass:
 seller2@mail.com
