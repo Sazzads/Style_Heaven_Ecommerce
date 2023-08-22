@@ -37,7 +37,7 @@ const Register = () => {
                             console.log(loggedUser);
                             updateUserProfile(data.name, data.image)
                                 .then(() => {
-                                    const saveUser = { name: data.name, email: data.email, photoUrl: data.image, role: 'customer' }
+                                    const saveUser = { name: data.name, email: data.email, photoUrl: data.image, role: 'customer',address:data.address }
                                     //store user info into db
                                     fetch(`http://localhost:5000/users`, {
                                         method: 'POST',
@@ -116,6 +116,13 @@ const Register = () => {
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Address</span>
+                            </label>
+                            <input  {...register("address", { required: true })} type="text" placeholder="address" className="input input-bordered" />
+                            {errors.name && <span className='text-red-600'>This field is required</span>}
                         </div>
                         <div>
                             <p>Don't Have An Account? <Link to="/login" className='text-red-600'>Please Login</Link></p>

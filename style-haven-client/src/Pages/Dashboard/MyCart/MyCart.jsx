@@ -5,12 +5,17 @@ import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
+import useUserInfo from '../../../hooks/useUserInfo';
+import useAuth from '../../../hooks/useAuth';
 
 const MyCart = () => {
+    const [isAddressConfirmed, setIsAddressConfirmed] = useState(false);
     const [cart, refetch] = useCart()
     const [counts, setCounts] = useState({}); // Use an object to store counts for each item
     const [axiosSecure] = useAxiosSecure()
-// console.log(cart);
+    const [userInfo] = useUserInfo()
+    const { user } = useAuth()
+   
     useEffect(() => {
         // Initialize counts object with current cart quantities
         const initialCounts = {};
@@ -89,6 +94,25 @@ const MyCart = () => {
             }
         })
     }
+
+    const handleAddressUpdate = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const billingAddress = form.billingAddress.value;
+
+        const newBillingAddress =  billingAddress 
+        // console.log(newBillingAddress);
+        //put data
+        axiosSecure.put(`/users/updateBillingAddress/${user.email}`,  { billingAddress: newBillingAddress })
+            .then(res => {
+                console.log(res.data);
+                setIsAddressConfirmed(true);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     return (
         <>
             <Helmet>
@@ -124,6 +148,7 @@ const MyCart = () => {
                     }
                 </div>
                 <div className='mt-10 h-96 w-96 bg-pink-300 mx-auto p-5 md:fixed md:right-40'>
+
                     <table >
                         <thead>
                             <tr>
@@ -144,8 +169,14 @@ const MyCart = () => {
                             <tr>
                                 <td>Address: </td>
                                 <td>
-                                    <form>
-                                        <input type="text" />
+                                    <form onSubmit={handleAddressUpdate}>
+                                        <textarea
+                                            name='billingAddress'
+                                            defaultValue={userInfo?.address}
+                                            className="textarea textarea-bordered h-24"
+                                            type="text"
+                                        />
+                                        <input className='btn btn-xs' type="submit" value="Confirm Address" />
                                     </form>
                                 </td>
                             </tr>
@@ -161,7 +192,10 @@ const MyCart = () => {
                             </tr>
                         </tbody>
                     </table>
-                    <Link to={`/dashboard/payment`} className='btn btn-xs '>Pay</Link>
+                    <Link to={`/dashboard/payment`} className={`btn btn-sm ${isAddressConfirmed ? '' : 'btn-disabled'}`}>
+                        Payment
+                    </Link>
+
                 </div>
             </div>
         </>

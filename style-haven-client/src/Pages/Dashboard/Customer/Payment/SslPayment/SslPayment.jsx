@@ -2,12 +2,13 @@ import React from 'react';
 import useCart from '../../../../../hooks/useCart';
 import useAuth from '../../../../../hooks/useAuth';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
+import useUserInfo from '../../../../../hooks/useUserInfo';
 
 const SslPayment = ({ price }) => {
     const [cart, refetch] = useCart()
     const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure()
-
+    const [userInfo]=useUserInfo()
     // console.log(cart);
     // cart.map((cart) => {
     //     console.log(cart.email);  
@@ -26,7 +27,8 @@ const SslPayment = ({ price }) => {
         names: cart.map(item => item.name),
         CartItems: cart.map(item => item._id),
         productItems: cart.map(item => item.itemId),
-        delevaryStatus: "Delevary pending"
+        delevaryStatus: "Delevary pending",
+        billingAddress:userInfo.billingAddress
     }
     // console.log(data);
     const handleSubmit =async () => {

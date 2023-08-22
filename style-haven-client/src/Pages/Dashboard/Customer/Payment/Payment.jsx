@@ -15,6 +15,7 @@ const Payment = ({ counts }) => {
     // total = (total * 7 / 100 + total)
     // const price = parseFloat(total.toFixed(2))
     // console.log(total);
+    
     const total = cart.reduce((sum, item) => {
         const itemPrice = parseFloat(item.price);
         const itemQuantity = parseInt(item.cartquantity, 10);

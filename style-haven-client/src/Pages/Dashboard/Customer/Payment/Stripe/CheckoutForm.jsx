@@ -3,12 +3,15 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../../../hooks/useAxiosSecure';
 import useAuth from '../../../../../hooks/useAuth';
 import useCart from '../../../../../hooks/useCart';
+import useUserInfo from '../../../../../hooks/useUserInfo';
 
 const CheckoutForm = ({ price }) => {
     const { user } = useAuth()
     const [cart, refetch] = useCart()
-    // console.log(price);
+    const [userInfo]=useUserInfo()
+    // console.log(userInfo.billingAddress);
     // console.log(cart);
+    console.log(price);
   
     const stripe = useStripe()
     const elements = useElements()
@@ -85,7 +88,8 @@ const CheckoutForm = ({ price }) => {
                 CartItems: cart.map(item => item._id),
                 productItems: cart.map(item => item.itemId),
                 delevaryStatus: "Delevary pending",
-                paidStatus:true
+                paidStatus:true,
+                billingAddress:userInfo.billingAddress
             }
             axiosSecure.post('/payments', payment)
                 .then(res => {

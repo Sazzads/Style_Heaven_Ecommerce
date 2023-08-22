@@ -23,6 +23,7 @@ import AllPaymentHistory from "../Pages/Dashboard/Admin/AllPaymentHistory";
 import Tops from "../Pages/Pages/Tops";
 import Bottoms from "../Pages/Pages/Bottoms";
 import Kids from "../Pages/Pages/Kids";
+import Accessories from "../Pages/Pages/Accessories";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: '/bottoms',
         element: <Bottoms></Bottoms>
+      },
+      {
+        path:'/accessories',
+        element:<Accessories></Accessories>
       },
       {
         path: '/kids',

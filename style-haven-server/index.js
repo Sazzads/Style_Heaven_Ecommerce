@@ -205,13 +205,13 @@ async function run() {
             }
         })
 
-        //get tops product
-        app.get(('/tops/:text'), async (req, res) => {
+        //get Category product
+        app.get(('/category/:text'), async (req, res) => {
             // console.log(req.params.text);
-            if (req.params.text == 'tops') {
-                const result = await productCollection.find({ category: req.params.text }).toArray()
-                return res.send(result)
-            }
+            // if (req.params.text == 'tops') {
+            const result = await productCollection.find({ category: req.params.text }).toArray()
+            return res.send(result)
+            // }
         })
 
 
@@ -267,6 +267,33 @@ async function run() {
             res.send(result)
         })
 
+        //cart address store
+        // if (req.decoded.email !== email) {
+        //     res.send({ customer: false })
+        // }
+        app.get('/users/userInfo/:email', async (req, res) => {
+            const email = req.params.email;
+
+            const query = { email: email }
+            const result = await usersCollection.findOne(query);
+            res.send(result)
+        })
+
+        //test
+        app.put('/users/updateBillingAddress/:email', async (req, res) => {
+            const email = req.params.email;
+            const billingAddress = req.body.billingAddress;
+            console.log(billingAddress);
+            const filter = { email: email }
+            options = { upsert: true }
+            const updatedAddress = {
+                $set: {
+                    billingAddress: billingAddress
+                }
+            }
+            const result = await usersCollection.updateOne(filter, updatedAddress, options)
+            res.send(result)
+        });
 
         /* --------------------------------------------
         ------------payment related api----------------
@@ -377,7 +404,7 @@ async function run() {
                     paidStatus: false,
                 }
                 // const result = paymentCollection.insertOne(finalOrder)
-               
+
 
                 console.log('Redirecting to: ', GatewayPageURL)
             });
@@ -397,7 +424,7 @@ async function run() {
                 const query = { _id: { $in: order.CartItems.map(id => new ObjectId(id)) } }
                 const deleteResult = cartCollection.deleteMany(query)
                 // res.redirect({ deleteResult })
-                
+
             })
         })
 

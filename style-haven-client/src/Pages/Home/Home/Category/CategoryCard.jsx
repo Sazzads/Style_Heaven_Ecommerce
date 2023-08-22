@@ -38,7 +38,7 @@ const CategoryCard = ({ item }) => {
                         refetch()
                         toast.success("items Added to the cart")
                     }
-                })
+                })   
 
         }
         else {
