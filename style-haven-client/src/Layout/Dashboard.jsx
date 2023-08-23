@@ -7,6 +7,7 @@ import useAdmin from '../hooks/useAdmin';
 import useSeller from '../hooks/useSeller';
 import UseCustomer from '../hooks/UseCustomer';
 import Footer from '../Pages/Shared/Footer/Footer';
+import AdminHome from '../Pages/Dashboard/Admin/AdminHome/AdminHome';
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin()
@@ -23,7 +24,7 @@ const Dashboard = () => {
                 <div className="drawer-content flex flex-col  border-2">
                     {/* Page content here */}
                     <Outlet></Outlet>
-                    
+                    {isAdmin &&<AdminHome></AdminHome>}
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
@@ -37,7 +38,7 @@ const Dashboard = () => {
                                 <li><NavLink to='/dashboard/'><FaHouseUser></FaHouseUser>Admin Home </NavLink></li>
                                 <li><NavLink to='/dashboard/users'><FaUserAlt></FaUserAlt>Users </NavLink></li>
                                 <li><NavLink to='/dashboard/managesellerproduct'><FaTshirt></FaTshirt>Manage Product </NavLink></li>
-                                <li><NavLink to='/dashboard/manageOrder'><FaCashRegister></FaCashRegister>Manage Order </NavLink></li>
+                                <li><NavLink to='/dashboard/manageorder'><FaCashRegister></FaCashRegister>Manage Order </NavLink></li>
                                 <li><NavLink to='/dashboard/allPaymentshistory'><FaDollarSign></FaDollarSign>All Payment History </NavLink></li>
                             </>
                         }

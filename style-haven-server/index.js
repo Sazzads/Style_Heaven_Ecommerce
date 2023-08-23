@@ -214,6 +214,15 @@ async function run() {
             // }
         })
 
+        //test 22
+        app.get('/paymenthistoryseller/:productItemId', async (req, res) => {
+            const productItemId = req.params.productItemId;
+            console.log(productItemId);
+
+            const result = await paymentCollection.find({productItems:req.params.productItemId}).toArray()
+            res.send(result);
+        });
+
 
         /*------------------------------------------------
          ---------cart collection related api------------- 

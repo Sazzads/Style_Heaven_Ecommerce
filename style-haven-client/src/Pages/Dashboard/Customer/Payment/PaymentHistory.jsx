@@ -7,7 +7,7 @@ const PaymentHistory = () => {
     const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure()
     const [histories, setHistories] = useState([])
-
+ 
     useEffect(() => {
         axiosSecure.get(`/paymenthistory/${user?.email}`)
             .then(res => {
@@ -22,17 +22,7 @@ const PaymentHistory = () => {
         const formattedTime = date.toLocaleTimeString(); // Format the time part
         return `Date: ${formattedDate} Time:${formattedTime}`;
     };
-    // const { data: data = [], refetch } = useQuery(['paymenthistory'], async () => {
-    //     try {
-    //         const response = await fetch(`http://localhost:5000/paymenthistory/${user?.email}`);
-    //         const data = await response.json();
-    //         console.log(data);
-    //         return data; // Return the data to the useQuery hook
-    //     } catch (error) {
-    //         console.error('Error fetching data:', error);
-    //         return []; // Return an empty array in case of an error
-    //     }
-    // });
+
     return (
         <div className='mx-10'>
             <div>
