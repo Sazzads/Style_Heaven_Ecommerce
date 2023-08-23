@@ -3,6 +3,9 @@ import Cover from './Cover';
 import Brand from './Brand';
 import { Helmet } from 'react-helmet-async';
 import Category from './Category/Category';
+import NewCollection from './NewCollection';
+import WeekendSels from './WeekendSels';
+import ClothBrand from './ClothBrand';
 
 
 const Home = () => {
@@ -17,6 +20,11 @@ const Home = () => {
             </div> 
             <div className='max-w-screen-xl mx-auto' >
                 <Category></Category>
+            </div>
+            <div className='max-w-screen-xl mx-auto' >
+                <NewCollection></NewCollection>
+                <WeekendSels></WeekendSels>
+                <ClothBrand></ClothBrand>
             </div>
 
         </div>

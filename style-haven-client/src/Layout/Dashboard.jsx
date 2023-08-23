@@ -8,6 +8,7 @@ import useSeller from '../hooks/useSeller';
 import UseCustomer from '../hooks/UseCustomer';
 import Footer from '../Pages/Shared/Footer/Footer';
 import AdminHome from '../Pages/Dashboard/Admin/AdminHome/AdminHome';
+import CustomerDashboard from '../Pages/Dashboard/Customer/CustomerDashboard/CustomerDashboard';
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin()
@@ -24,7 +25,9 @@ const Dashboard = () => {
                 <div className="drawer-content flex flex-col  border-2">
                     {/* Page content here */}
                     <Outlet></Outlet>
-                    {isAdmin &&<AdminHome></AdminHome>}
+                    {/* {isAdmin &&<AdminHome></AdminHome>}
+                    {isSeller &&<AdminHome></AdminHome>}
+                    {isCustomer&& <CustomerDashboard></CustomerDashboard>} */}
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
@@ -35,7 +38,7 @@ const Dashboard = () => {
                         {
                             isAdmin &&
                             <>
-                                <li><NavLink to='/dashboard/'><FaHouseUser></FaHouseUser>Admin Home </NavLink></li>
+                                <li><NavLink to='/dashboard/home'><FaHouseUser></FaHouseUser>Admin Home </NavLink></li>
                                 <li><NavLink to='/dashboard/users'><FaUserAlt></FaUserAlt>Users </NavLink></li>
                                 <li><NavLink to='/dashboard/managesellerproduct'><FaTshirt></FaTshirt>Manage Product </NavLink></li>
                                 <li><NavLink to='/dashboard/manageorder'><FaCashRegister></FaCashRegister>Manage Order </NavLink></li>
@@ -43,14 +46,14 @@ const Dashboard = () => {
                             </>
                         }
                         {isSeller && <>
-                            <li><NavLink to='/dashboard/'><FaHouseUser></FaHouseUser>seller Home </NavLink></li>
+                            <li><NavLink to='/dashboard/sellerhome'><FaHouseUser></FaHouseUser>seller Home </NavLink></li>
                             <li><NavLink to='/dashboard/addproduct'><FaTshirt></FaTshirt>Add Product </NavLink></li>
                             <li><NavLink to='/dashboard/managepreoducts'><FaTshirt></FaTshirt>Manage Products </NavLink></li>
                             <li><NavLink to='/dashboard/approvedproducts'><FaTshirt></FaTshirt>Approved Products </NavLink></li>
                             <li><NavLink to='/dashboard/orderedproducts'><FaTshirt></FaTshirt>Orderd Products </NavLink></li>
                         </>}
                         {isCustomer && <>
-                            <li><NavLink to='/dashboard/'><FaHouseUser></FaHouseUser>Customer Home </NavLink></li>
+                            <li><NavLink to='/dashboard/customerhome'><FaHouseUser></FaHouseUser>Customer Home </NavLink></li>
                             <li><NavLink to='/dashboard/mycart'><FaShoppingCart></FaShoppingCart>cart </NavLink></li>
                             <li><NavLink to='/dashboard/paymenthistory'><FaShoppingCart></FaShoppingCart>Payment History</NavLink></li>
                             <li><NavLink to='/allproducts'><FaTshirt></FaTshirt>All Product </NavLink></li>
@@ -64,7 +67,10 @@ const Dashboard = () => {
 
                 </div>
             </div>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
+            <div className='mt-5'>
+                
+            </div>
         </>
     );
 };

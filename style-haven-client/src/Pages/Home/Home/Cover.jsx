@@ -8,10 +8,10 @@ import { FaArrowRight } from 'react-icons/fa';
 const Cover = () => {
     return (
         <div className=''>
-            <div className="carousel w-full h-[850px] ">
+            <div className="carousel w-full h-[900px] ">
                 <div id="item1" className="carousel-item w-full relative">
                     <img src={pic1} className="w-full" />
-                    <div className='absolute py-48 md:py-64 flex justify-between transform -translate-y-1/2   top-1/2 bg-opacity-40 bg-black text-white px-16'>
+                    <div className='absolute py-48 md:py-64 flex justify-between transform -translate-y-1/2  top-1/2 bg-opacity-40 bg-black text-white px-16'>
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>

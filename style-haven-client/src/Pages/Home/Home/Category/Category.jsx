@@ -13,11 +13,11 @@ const Category = () => {
     const [acceptProducts] = UseAcceptProducts();
     // console.log(acceptProducts);
     const mens = acceptProducts.filter(item => item.category === 'mens')
-    const newMens = mens.slice(0, 6)
+    const newMens = mens.slice(0, 8)
     const womens = acceptProducts.filter(item => item.category === 'womens')
-    const newWomens = womens.slice(0, 6)
+    const newWomens = womens.slice(0, 8)
     const kids = acceptProducts.filter(item => item.category === 'kids')
-    const newKids = kids.slice(0, 6)
+    const newKids = kids.slice(0, 8)
 
     return (
         <div>

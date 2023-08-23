@@ -1,18 +1,18 @@
 import React from 'react';
-import AdminHeader from './AdminHeader';
-import AdminChart from './AdminChart';
-import AdminAreaChart from './AdminAreaChart';
+import SellerHeader from './SellerHeader';
+import SellerChart from './SellerChart';
+import SellerAreaChart from './SellerAreaChart';
 import Table from './Table';
- 
-const AdminHome = () => {
+
+const SellerHome = () => {
     return (
         <div className='m-5'>
             {/* head  */}
-            <AdminHeader></AdminHeader>
+            <SellerHeader></SellerHeader>
             {/* head  */}
             <div className='grid md:grid-cols-2 '>
-                <AdminChart></AdminChart>
-                <AdminAreaChart></AdminAreaChart>
+                <SellerChart></SellerChart>
+                <SellerAreaChart></SellerAreaChart>
             </div>
             <div className='grid md:grid-cols-2'>
                 <div className='grid grid-cols-1'>
@@ -53,4 +53,4 @@ const AdminHome = () => {
     );
 };
 
-export default AdminHome;
+export default SellerHome;

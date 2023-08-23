@@ -94,7 +94,7 @@ const MyCart = () => {
             }
         })
     }
-
+  
     const handleAddressUpdate = (event) => {
         event.preventDefault();
         const form = event.target;

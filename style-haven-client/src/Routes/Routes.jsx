@@ -26,6 +26,9 @@ import Kids from "../Pages/Pages/Kids";
 import Accessories from "../Pages/Pages/Accessories";
 import ManageOrder from "../Pages/Dashboard/Admin/ManageOrder";
 import OrderedProducts from "../Pages/Dashboard/Seller/OrderedProducts";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
+import CustomerDashboard from "../Pages/Dashboard/Customer/CustomerDashboard/CustomerDashboard";
+import SellerHome from "../Pages/Dashboard/Seller/SellerHome/SellerHome";
 
 const router = createBrowserRouter([
   {
@@ -84,12 +87,20 @@ const router = createBrowserRouter([
         element: <MyCart></MyCart>
       },
       {
+        path: 'customerhome',
+        element: <CustomerDashboard></CustomerDashboard>
+      },
+      {
         path: 'payment',
         element: <Payment></Payment>
       },
       {
         path: 'paymenthistory',
         element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: 'home',
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
       },
       {
         path: 'users',
@@ -106,6 +117,10 @@ const router = createBrowserRouter([
       {
         path: 'manageorder',
         element: <AdminRoute><ManageOrder></ManageOrder></AdminRoute>
+      },
+      {
+        path: 'sellerhome',
+        element: <SellerRoute><SellerHome></SellerHome></SellerRoute>
       },
       {
         path: 'addproduct',

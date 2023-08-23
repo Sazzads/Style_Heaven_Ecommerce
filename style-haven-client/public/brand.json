@@ -1,0 +1,50 @@
+[
+    {
+        "id": "01",
+        "name": "GUCCHI",
+        "price": 24,
+        "img": "https://i.ibb.co/jJBwCgJ/Rectangle-35.png"
+    },
+    {
+        "id": "02",
+        "name": "ROLEX",
+        "price": 24,
+        "img": "https://i.ibb.co/T2F0cHH/Rectangle-36.png"
+    },
+    {
+        "id": "03",
+        "name": "GUCCHI",
+        "price": 24,
+        "img": "https://i.ibb.co/nRjrMrd/Rectangle-37.png"
+    },
+    {
+        "id": "04",
+        "name": "ADDIDAS",
+        "price": 24,
+        "img": "https://i.ibb.co/MGVbDj2/Rectangle-38.png"
+    },
+    {
+        "id": "05",
+        "name": "ADDIDAS",
+        "price": 24,
+        "img": "https://i.ibb.co/RD1NcV3/Group-32.png"
+    },
+    {
+        "id": "06",
+        "name": "TOP 10",
+        "price": 24,
+        "img": "https://i.ibb.co/CQjZW6y/Rectangle-32.png"
+    },
+    {
+        "id": "07",
+        "name": "LEVIS",
+        "price": 24,
+        "img": "https://i.ibb.co/Smvd82v/Rectangle-33.png"
+    },
+    {
+        "id": "08",
+        "name": "KANGARO",
+        "price": 24,
+        "img": "https://i.ibb.co/6JkcYz3/Rectangle-34.png"
+    }
+]
