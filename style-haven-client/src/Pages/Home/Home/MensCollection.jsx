@@ -1,6 +1,6 @@
 import React from 'react';
-import img1 from "../../../assets//banner11.jpg"
-import img2 from "../../../assets//banner12.jpg"
+import img1 from "../../../assets/banner11.jpg"
+import img2 from "../../../assets/banner12.jpg"
 
 const MensCollection = () => {
     return (

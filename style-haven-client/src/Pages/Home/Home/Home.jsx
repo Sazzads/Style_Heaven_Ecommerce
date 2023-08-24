@@ -7,6 +7,9 @@ import NewCollection from './NewCollection';
 import WeekendSels from './WeekendSels';
 import ClothBrand from './ClothBrand';
 import MensCollection from './MensCollection';
+import Section1 from './Section1';
+import CountDown from './CountDown';
+import NewFashion from './Category/NewFashion';
 
 
 const Home = () => {
@@ -18,6 +21,7 @@ const Home = () => {
             <Cover></Cover>
             <div className='max-w-screen-xl mx-auto' >
                 <Brand></Brand>
+                <CountDown initialDays={150}></CountDown>
             </div>
             <div className='max-w-screen-xl mx-auto' >
                 <Category></Category>
@@ -26,8 +30,9 @@ const Home = () => {
                 <NewCollection></NewCollection>
                 <WeekendSels></WeekendSels>
                 <MensCollection></MensCollection>
-
+                <Section1></Section1>
                 <ClothBrand></ClothBrand>
+                <NewFashion></NewFashion>
             </div>
         </div>
     );
