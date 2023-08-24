@@ -19,7 +19,7 @@ const Navbar = () => {
             
     }
     const navOptions = <>
-        <li><Link className='me-1'>New</Link></li>
+        <li><Link to='/new'>New</Link></li>
         <li><Link to='/tops'>Tops</Link></li>
         <li><Link to='/bottoms'>Bottoms</Link></li>
         <li><Link to='/kids'>Kids</Link></li>

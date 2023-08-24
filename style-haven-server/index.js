@@ -114,10 +114,16 @@ async function run() {
             const result = await productCollection.find().toArray()
             res.send(result)
         })
+        //get new products
+        app.get('/newproducts', async (req, res) => {
+            const result = await productCollection.find().sort({ createdAt: -1 }).toArray()
+            res.send(result)
+        })
 
         //post product
         app.post('/product', verifyJWT, verifySeller, async (req, res) => {
             const newItem = req.body;
+            newItem.createdAt = new Date();
             const result = await productCollection.insertOne(newItem)
             res.send(result)
 
@@ -200,7 +206,7 @@ async function run() {
         app.get(('/productsapproved/:text'), async (req, res) => {
             // console.log(req.params.text);
             if (req.params.text == 'approved') {
-                const result = await productCollection.find({ status: req.params.text }).toArray()
+                const result = await productCollection.find({ status: req.params.text }).sort({ createdAt: -1 }).toArray()
                 return res.send(result)
             }
         })
@@ -213,13 +219,24 @@ async function run() {
             return res.send(result)
             // }
         })
+        //pagination
+        app.get(('/productsapproved'), async (req, res) => {
+           
+            // console.log(req.query);
+            const page = parseInt(req.query.page) || 0;
+            const limit = parseInt(req.query.limit) || 20;
+            const skip = page * limit;
+            const result = await productCollection.find({ status: "approved" }).skip(skip).limit(limit).toArray();
+            return res.send(result)
 
-        //test 22
+        })
+
+        //payment history of seller
         app.get('/paymenthistoryseller/:productItemId', async (req, res) => {
             const productItemId = req.params.productItemId;
             console.log(productItemId);
 
-            const result = await paymentCollection.find({productItems:req.params.productItemId}).toArray()
+            const result = await paymentCollection.find({ productItems: req.params.productItemId }).toArray()
             res.send(result);
         });
 

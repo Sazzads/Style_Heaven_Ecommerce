@@ -29,6 +29,7 @@ import OrderedProducts from "../Pages/Dashboard/Seller/OrderedProducts";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import CustomerDashboard from "../Pages/Dashboard/Customer/CustomerDashboard/CustomerDashboard";
 import SellerHome from "../Pages/Dashboard/Seller/SellerHome/SellerHome";
+import New from "../Pages/Pages/New";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/new',
+        element: <New></New>
       },
       {
         path: '/tops',
