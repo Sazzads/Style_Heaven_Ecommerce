@@ -7,11 +7,11 @@ const AllProducts = () => {
     const [allProducts, setAllProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(0);
     const [acceptProducts] = UseAcceptProducts();
-    // console.log(acceptProducts);
+    console.log(acceptProducts);
     const itemsPerPage = 20;
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`http://localhost:5000/productsapproved?page=${currentPage}&limit=${itemsPerPage}`);
+            const response = await fetch(`https://style-haven-server.vercel.app/productsapproved?page=${currentPage}&limit=${itemsPerPage}`);
             const data = await response.json();
             setAllProducts(data);
         }

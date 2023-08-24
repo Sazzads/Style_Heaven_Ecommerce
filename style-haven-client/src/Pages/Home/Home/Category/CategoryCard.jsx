@@ -25,7 +25,7 @@ const CategoryCard = ({ item }) => {
 
         else if (user && user.email) {
             const cartItem = { itemId: _id, name, image, price, quantity, cartquantity, email: user.email, soldproduct }
-            fetch('http://localhost:5000/carts', {
+            fetch('https://style-haven-server.vercel.app/carts', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -53,7 +53,7 @@ const CategoryCard = ({ item }) => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <figure><img src={image} alt="Shoes" /></figure>
+                <figure><img src={image} alt="loading" loading="lazy"/></figure>
                 {isHovered && (
                     <div className='absolute bg-black bg-opacity-40 text-white text-center top-0 bottom-0 left-0 right-0 rounded-2xl '>
                         <div className='mt-60'>

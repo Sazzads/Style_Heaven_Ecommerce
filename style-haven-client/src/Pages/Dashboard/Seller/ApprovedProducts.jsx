@@ -11,7 +11,7 @@ const ApprovedProducts = () => {
 
     const { data: data = [], refetch } = useQuery(['products'], async () => {
         try {
-            const response = await fetch(`http://localhost:5000/products/${user?.email}`);
+            const response = await fetch(`https://style-haven-server.vercel.app/products/${user?.email}`);
             let data = await response.json();
             data = data.filter(item => item.status === 'approved')
             return data; // Return the data to the useQuery hook

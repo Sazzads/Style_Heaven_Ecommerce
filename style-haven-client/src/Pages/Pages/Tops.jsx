@@ -4,7 +4,7 @@ import CategoryCard from '../Home/Home/Category/CategoryCard';
 const Tops = () => {
     const [tops, setTops] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/category/tops`)
+        fetch(`https://style-haven-server.vercel.app/category/tops`)
             .then(res => res.json())
             .then(data => {
                 setTops(data);

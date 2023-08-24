@@ -33,7 +33,7 @@ const SslPayment = ({ price }) => {
     // console.log(data);
     const handleSubmit =async () => {
         console.log(data);
-        // fetch("http://localhost:5000/order", {
+        // fetch("https://style-haven-server.vercel.app/order", {
         //     method: "POST",
         //     headers: { "content-type": "application/json" },
         //     body: JSON.stringify(data)
@@ -56,7 +56,7 @@ const SslPayment = ({ price }) => {
 
         const updateSoldProduct = async (itemId, newSoldProduct) => {
             try {
-                const response = await fetch(`http://localhost:5000/paymentsprductupdate/${itemId}`, {
+                const response = await fetch(`https://style-haven-server.vercel.app/paymentsprductupdate/${itemId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

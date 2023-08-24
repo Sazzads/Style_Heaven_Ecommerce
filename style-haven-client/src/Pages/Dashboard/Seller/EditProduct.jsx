@@ -16,7 +16,7 @@ const EditProduct = () => {
     const [axiosSecure] = useAxiosSecure()
     const { data: data = [], refetch } = useQuery(['product'], async () => {
         try {
-            const response = await fetch(`http://localhost:5000/product/${id}`);
+            const response = await fetch(`https://style-haven-server.vercel.app/product/${id}`);
             const data = await response.json();
             return data; // Return the data to the useQuery hook
         } catch (error) {
@@ -52,7 +52,7 @@ const EditProduct = () => {
 
                     //store product info into db 
                     console.log(saveProduct);
-                    fetch(`http://localhost:5000/product/${id}`, {
+                    fetch(`https://style-haven-server.vercel.app/product/${id}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

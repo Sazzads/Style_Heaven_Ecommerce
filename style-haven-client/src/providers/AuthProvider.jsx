@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
 
             //jwt token and add to local storage
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                axios.post('https://style-haven-server.vercel.app/jwt', { email: currentUser.email })
                     .then(data => {
                         // console.log(data.data.token);
                         localStorage.setItem('access-token', data.data.token)

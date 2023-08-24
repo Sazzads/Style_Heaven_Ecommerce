@@ -104,7 +104,7 @@ const CheckoutForm = ({ price }) => {
 
             const updateSoldProduct = async (itemId, newSoldProduct) => {
                 try {
-                    const response = await fetch(`http://localhost:5000/paymentsprductupdate/${itemId}`, {
+                    const response = await fetch(`https://style-haven-server.vercel.app/paymentsprductupdate/${itemId}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'

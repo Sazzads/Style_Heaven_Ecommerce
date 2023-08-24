@@ -1,7 +1,13 @@
-import React from 'react';
-import wekwnd from '../../../../public/brand.json'
+import React, { useEffect, useState } from 'react';
 const ClothBrand = () => {
-    console.log(wekwnd);
+    const [dresses, setDresses] = useState([])
+    useEffect(() => {
+        fetch('brand.json')
+            .then(res => res.json())  
+            .then(data => {
+                setDresses(data)
+            })
+    }, [])
     return (
         <div>
 
@@ -11,7 +17,7 @@ const ClothBrand = () => {
             </div>
             <div className='grid md:grid-cols-4'>
                 {
-                    wekwnd.map((dress, index) => {
+                    dresses.map((dress, index) => {
                         return (
                             <div key={dress.id} className='card rounded-none cursor-pointer hover:bg-pink-300 relative transition duration-300 ease-in-out hover:scale-110'>
                                 <img src={dress.img} alt="" />

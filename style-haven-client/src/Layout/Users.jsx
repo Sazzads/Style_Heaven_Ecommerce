@@ -18,7 +18,7 @@ const Users = () => {
             role: role
         };
 
-        const res = await fetch(`http://localhost:5000/users/${user._id}`, {
+        const res = await fetch(`https://style-haven-server.vercel.app/users/${user._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

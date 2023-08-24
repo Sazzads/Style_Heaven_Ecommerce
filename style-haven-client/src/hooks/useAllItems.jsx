@@ -5,7 +5,7 @@ const useAllItems = () => {
     // const [allItems, setAllItems] = useState([])
     // const [loading, setLoading] = useState(true)
     // useEffect(() => {
-    //     fetch('http://localhost:5000/products')
+    //     fetch('https://style-haven-server.vercel.app/products')
     //         .then(res => res.json())
     //         .then(data => {
     //             setAllItems(data)
@@ -15,7 +15,7 @@ const useAllItems = () => {
     const {refetch, data: allItems = [], isLoading: loading } = useQuery({
         queryKey: ['allItems'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/products');
+            const res = await fetch('https://style-haven-server.vercel.app/products');
             return res.json();
         }
     })

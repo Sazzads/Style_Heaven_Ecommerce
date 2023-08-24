@@ -39,7 +39,7 @@ const Register = () => {
                                 .then(() => {
                                     const saveUser = { name: data.name, email: data.email, photoUrl: data.image, role: 'customer',address:data.address }
                                     //store user info into db
-                                    fetch(`http://localhost:5000/users`, {
+                                    fetch(`https://style-haven-server.vercel.app/users`, {
                                         method: 'POST',
                                         headers: {
                                             'content-type': 'application/json'

@@ -4,7 +4,7 @@ import CategoryCard from '../Home/Home/Category/CategoryCard';
 const Accessories = () => {
     const [accessories, setAccessories] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/category/accessories`)
+        fetch(`https://style-haven-server.vercel.app/category/accessories`)
             .then(res => res.json())
             .then(data => {
                 setAccessories(data)

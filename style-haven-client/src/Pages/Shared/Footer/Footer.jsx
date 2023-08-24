@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../../../public/vite.png"
+import logo from "/vite.png"
 
 const Footer = () => {
     return (

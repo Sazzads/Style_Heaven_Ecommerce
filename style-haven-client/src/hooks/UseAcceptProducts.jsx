@@ -5,7 +5,7 @@ const UseAcceptProducts = () => {
     const {refetch, data: acceptProducts = [], isLoading: loading } = useQuery({
         queryKey: ['acceptProducts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/productsapproved/approved');
+            const res = await fetch('https://style-haven-server.vercel.app/productsapproved/approved');
             return res.json();
         }
     })

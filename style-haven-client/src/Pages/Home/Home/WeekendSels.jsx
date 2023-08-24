@@ -1,7 +1,13 @@
-import React from 'react';
-import wekwnd from '../../../../public/weekendSels.json'
+import React, { useEffect, useState } from 'react';
 const WeekendSels = () => {
-    console.log(wekwnd);
+    const [dresses, setDresses] = useState([])
+    useEffect(() => {
+        fetch('weekendSels.json')
+            .then(res => res.json())  
+            .then(data => {
+                setDresses(data)
+            })
+    }, [])  
     return (
         <div>
             <div className='text-center my-5'>
@@ -12,7 +18,7 @@ const WeekendSels = () => {
         
             <div className='grid md:grid-cols-4 gap-4 '>
                 {
-                    wekwnd.map((dress, index) => {
+                    dresses.map((dress, index) => {
                         return (
                             <div key={dress.id} className='card border-2 cursor-pointer hover:bg-pink-300 transition duration-300 ease-in-out hover:scale-110'>
                                 <img src={dress.img} alt="" />

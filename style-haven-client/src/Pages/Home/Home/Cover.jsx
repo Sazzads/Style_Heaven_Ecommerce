@@ -8,13 +8,13 @@ import { FaArrowRight } from 'react-icons/fa';
 const Cover = () => {
     return (
         <div className=''>
-            <div className="carousel w-full h-[900px] ">
+            <div className="carousel w-full md:h-[900px] h-[500px] ">
                 <div id="item1" className="carousel-item w-full relative">
                     <img src={pic1} className="w-full" />
-                    <div className='absolute py-48 md:py-64 flex justify-between transform -translate-y-1/2  top-1/2 bg-opacity-40 bg-black text-white px-16'>
+                    <div className='absolute  flex justify-between top-0 left-0 right-0 bottom-0 bg-opacity-40 md:py-72 py-20 md:px-44 px-5 bg-black text-white '>
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl'>Shop the Latest Trends</h2>
-                            <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
+                            <p className='hidden md:block'>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
                             <button className="btn btn-outline border-0 border-b-4 mt-4 text-white bg-pink-600 flex items-center bg-black"><span className='me-2'>Shop Now</span> <FaArrowRight></FaArrowRight></button>
                         
                         </div>
@@ -22,7 +22,7 @@ const Cover = () => {
                 </div>
                 <div id="item2" className="carousel-item w-full relative">
                     <img src={pic2} className="w-full" />
-                    <div className='absolute py-48 md:py-64 flex justify-between transform -translate-y-1/2   top-1/2 bg-opacity-40 bg-black text-white px-16'>
+                    <div className='absolute  flex justify-between top-0 left-0 right-0 bottom-0 bg-opacity-40 md:py-72 py-20 md:px-44 px-5 bg-black text-white '>
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
@@ -33,7 +33,7 @@ const Cover = () => {
                 </div>
                 <div id="item3" className="carousel-item w-full relative">
                     <img src={pic3} className="w-full" />
-                    <div className='absolute py-48 md:py-64 flex justify-between transform -translate-y-1/2   top-1/2 bg-opacity-40 bg-black text-white px-16'>
+                    <div className='absolute  flex justify-between top-0 left-0 right-0 bottom-0 bg-opacity-40 md:py-72 py-20 md:px-44 px-5 bg-black text-white '>
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl text-pur'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>
@@ -44,7 +44,7 @@ const Cover = () => {
                 </div>
                 <div id="item4" className="carousel-item w-full relative">
                     <img src={pic4} className="w-full" />
-                    <div className='absolute py-48 md:py-64 flex justify-between transform -translate-y-1/2   top-1/2 bg-opacity-40 bg-black text-white px-16'>
+                    <div className='absolute  flex justify-between top-0 left-0 right-0 bottom-0 bg-opacity-40 md:py-72 py-20 md:px-44 px-5 bg-black text-white '>
                         <div className='text-white space-y-7 w-1/2 '>
                             <h2 className='text-xl md:text-6xl'>Shop the Latest Trends</h2>
                             <p>Discover a curated collection of the season's hottest styles and must-have fashion essentials. Explore our wide range of clothing, accessories, and footwear designed to keep you on-trend and confident.</p>

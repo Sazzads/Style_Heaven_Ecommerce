@@ -14,7 +14,7 @@ const ManageProducts = () => {
 
     const { data: data = [], refetch } = useQuery(['products'], async () => {
         try {
-            const response = await fetch(`http://localhost:5000/products/${user?.email}`);
+            const response = await fetch(`https://style-haven-server.vercel.app/products/${user?.email}`);
             const data = await response.json();
             return data; // Return the data to the useQuery hook
         } catch (error) {
