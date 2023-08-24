@@ -6,6 +6,7 @@ import Category from './Category/Category';
 import NewCollection from './NewCollection';
 import WeekendSels from './WeekendSels';
 import ClothBrand from './ClothBrand';
+import MensCollection from './MensCollection';
 
 
 const Home = () => {
@@ -17,16 +18,17 @@ const Home = () => {
             <Cover></Cover>
             <div className='max-w-screen-xl mx-auto' >
                 <Brand></Brand>
-            </div> 
+            </div>
             <div className='max-w-screen-xl mx-auto' >
                 <Category></Category>
             </div>
             <div className='max-w-screen-xl mx-auto' >
                 <NewCollection></NewCollection>
                 <WeekendSels></WeekendSels>
+                <MensCollection></MensCollection>
+
                 <ClothBrand></ClothBrand>
             </div>
-
         </div>
     );
 };

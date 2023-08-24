@@ -49,7 +49,7 @@ const CategoryCard = ({ item }) => {
     return (
         <>
             <div
-                className="card w-80 bg-base-100 shadow-xl relative"
+                className="card w-80 bg-base-100 shadow-xl relative transition duration-300 ease-in-out hover:scale-110"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >

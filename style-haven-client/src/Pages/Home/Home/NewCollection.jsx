@@ -5,8 +5,8 @@ import { FaArrowRight } from 'react-icons/fa';
 const NewCollection = () => {
     return (
         <div className='my-10'>
-            <div className='relative'>
-                <img src={newcollectionPic} alt="" />
+            <div className='relative '>
+                <img  src={newcollectionPic} alt="" />
                 <div className='absolute top-1/3 left-20 text-5xl font-semibold'>
                     <h2 >New <span className='text-pink-600'>2023</span></h2>
                     <h2 >Clothes Collection</h2>

@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import CategoryCard from "../Home/Home/Category/CategoryCard";
+import { Link } from "react-router-dom";
+
 
 
 const New = () => {
@@ -29,7 +31,9 @@ const New = () => {
                     })
                 }
             </div>
-            
+            <div className='flex items-center flex-col'>
+                <Link className='btn btn-outline border-0 border-b-4 mt-4 bg-pink-600 px-10' to='/allproducts'> <span className='text-white'>see All Products</span> </Link>
+            </div>
         </div>
     );
 };
