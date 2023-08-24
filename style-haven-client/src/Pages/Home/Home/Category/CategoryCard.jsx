@@ -3,6 +3,7 @@ import { AuthContext } from '../../../../providers/AuthProvider';
 import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useCart from '../../../../hooks/useCart';
+import LazyLoad from 'react-lazy-load';
 
 const CategoryCard = ({ item }) => {
     const { name, photoUrl: image, price, recipe, _id, quantity, details, soldproduct } = item
@@ -38,7 +39,7 @@ const CategoryCard = ({ item }) => {
                         refetch()
                         toast.success("items Added to the cart")
                     }
-                })   
+                })
 
         }
         else {
@@ -53,7 +54,12 @@ const CategoryCard = ({ item }) => {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <figure><img src={image} alt="loading" loading="lazy"/></figure>
+                <LazyLoad offset={50} threshold={0.95}>
+
+                <figure>
+                    <img src={image} alt="loading" loading="lazy" />
+                </figure>
+                </LazyLoad>
                 {isHovered && (
                     <div className='absolute bg-black bg-opacity-40 text-white text-center top-0 bottom-0 left-0 right-0 rounded-2xl '>
                         <div className='mt-60'>

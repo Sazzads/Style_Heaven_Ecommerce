@@ -30,6 +30,7 @@ import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import CustomerDashboard from "../Pages/Dashboard/Customer/CustomerDashboard/CustomerDashboard";
 import SellerHome from "../Pages/Dashboard/Seller/SellerHome/SellerHome";
 import New from "../Pages/Pages/New";
+import Collections from "../Pages/Pages/Collections";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path:'/accessories',
         element:<Accessories></Accessories>
+      },
+      {
+        path:'/collections',
+        element:<Collections></Collections>
       },
       {
         path: '/kids',

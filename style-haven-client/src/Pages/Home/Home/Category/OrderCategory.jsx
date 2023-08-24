@@ -16,7 +16,7 @@ const OrderCategory = () => {
         <h2 className='text-center text-5xl my-5'>{category}</h2>
             <div className='grid md:grid-cols-3 gap-10 mb-5'>
                 {
-                    orderItems.map(item=><CategoryCard item={item}></CategoryCard>)
+                    orderItems.map(item=><CategoryCard key={item._id} item={item}></CategoryCard>)
                 }
                 
             </div>

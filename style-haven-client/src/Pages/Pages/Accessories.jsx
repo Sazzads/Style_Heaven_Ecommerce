@@ -11,11 +11,11 @@ const Accessories = () => {
             })
     }, [])
     return (
-        <div className='max-w-screen-xl mx-auto my-10'>
+        <div className='max-w-screen-xl mx-auto my-10 '>
             <div className='text-5xl text-center my-5'>
                 Accessories
             </div>
-            <div className='grid md:grid-cols-4 gap-10 mb-5'>
+            <div className='grid md:grid-cols-4 gap-10 mb-5 justify-center'>
                 {
                     accessories.map((accessories) => {
                         return (

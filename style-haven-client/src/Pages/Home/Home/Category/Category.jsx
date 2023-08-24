@@ -27,7 +27,7 @@ const Category = () => {
                     <Tab >
                         <div className='relative'>
                             <img className='rounded-lg w-96' src={menPic} alt="" />
-                            <div className='absolute py-60  px-36 left-6 top-1 bg-opacity-20 bg-black'>
+                            <div className='absolute top-0 left-0 right-0 bottom-0 py-52 bg-opacity-20 bg-black'>
                                 <h1 className='text-center text-3xl text-white text-bold'>Men</h1>
                             </div>
                         </div>
@@ -35,7 +35,7 @@ const Category = () => {
                     <Tab >
                         <div className='relative'>
                             <img className='rounded-lg w-96' src={womenPic} alt="" />
-                            <div className='absolute py-60  px-32 left-4  top-1 bg-opacity-20 bg-black'>
+                            <div className='absolute top-0 left-0 right-0 bottom-0 py-52 bg-opacity-20 bg-black'>
                                 <h1 className='text-center text-3xl text-white text-bold'>women</h1>
                             </div>
                         </div>
@@ -43,7 +43,7 @@ const Category = () => {
                     <Tab >
                         <div className='relative'>
                             <img className='rounded-lg w-96' src={kidPic} alt="" />
-                            <div className='absolute py-60  px-36 left-6 top-1 bg-opacity-20 bg-black'>
+                            <div className='absolute top-0 left-0 right-0 bottom-0 py-52 bg-opacity-20 bg-black'>
                                 <h1 className='text-center text-3xl text-white text-bold'>Kids</h1>
                             </div>
                         </div>

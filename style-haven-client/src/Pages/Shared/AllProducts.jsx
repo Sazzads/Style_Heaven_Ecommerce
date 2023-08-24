@@ -7,7 +7,7 @@ const AllProducts = () => {
     const [allProducts, setAllProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(0);
     const [acceptProducts] = UseAcceptProducts();
-    console.log(acceptProducts);
+    // console.log(acceptProducts);
     const itemsPerPage = 20;
     useEffect(() => {
         async function fetchData() {
@@ -25,7 +25,7 @@ const AllProducts = () => {
             <div>
                 <h3 className="text-5xl text-center my-5">All Products</h3>
             </div>
-            <div className='grid md:grid-cols-4 gap-10 mb-5'>
+            <div className='grid md:grid-cols-4 gap-10 mb-5 justify-center'>
                 {allProducts.map(item => {
                     return (
                         <div key={item._id} >

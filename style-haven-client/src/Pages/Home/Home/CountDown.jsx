@@ -43,8 +43,7 @@ const CountDown = ({ initialDays }) => {
                 <h2 className='text-black text-2xl uppercase'>--flash Sale--</h2>
                 <p className='text-black text-l'>Great Promotions,save up to 35%! Only for a shoet time</p>
                 <div className=''>
-                    <div className="grid grid-flow-col gap-5 t
-                    ext-center auto-cols-max justify-center">
+                    <div className="grid grid-flow-col gap-2 md:gap-6 text-center auto-cols-max justify-center ">
                         <div className="flex flex-col p-2 bg-black rounded-box text-neutral-content">
                             <span className="font-mono text-5xl">{days}</span>
                             days

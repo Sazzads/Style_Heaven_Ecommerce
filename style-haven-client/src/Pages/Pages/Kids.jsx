@@ -13,7 +13,7 @@ const Kids = () => {
     return (
         <>
             <div className='max-w-screen-xl mx-auto my-10'>
-                <div className='text-5xl text-center my-5'>
+                <div className='text-5xl text-center my-5 justify-center'>
                     Kids
                 </div>
                 <div className='grid md:grid-cols-4 my-5 gap-10'>

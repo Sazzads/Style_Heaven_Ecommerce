@@ -6,7 +6,7 @@ const OrderTab = ({ items }) => {
     // console.log(items);
     return (
         <>
-            <div className='grid md:grid-cols-4 gap-10 mb-5'>
+            <div className='grid md:grid-cols-4 gap-10 mb-5 justify-center'>
                 {
                     items.map(item => <CategoryCard key={item._id} item={item}></CategoryCard>)
                 }

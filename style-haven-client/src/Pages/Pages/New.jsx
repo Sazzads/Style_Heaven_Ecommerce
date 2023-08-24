@@ -19,7 +19,7 @@ const New = () => {
             <div>
                 <h3 className="text-5xl text-center my-5">New Products</h3>
             </div>
-            <div className='grid md:grid-cols-4 gap-10 mb-5'>
+            <div className='grid md:grid-cols-4 gap-10 mb-5 justify-center'>
                 {
                     newProductsSlice.map((newproduct) => {
                         return (

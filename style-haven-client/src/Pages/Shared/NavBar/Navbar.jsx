@@ -24,19 +24,19 @@ const Navbar = () => {
         <li><Link to='/bottoms'>Bottoms</Link></li>
         <li><Link to='/kids'>Kids</Link></li>
         <li><Link to='/accessories'>Accessories</Link></li>
-        <li><Link>Collections</Link></li>
+        <li><Link to='/collections'>Collections</Link></li>
         <li><Link to='/allproducts'>Sale</Link></li>
     </>
     return (
         // max-w-screen-xl mx-auto 
         <div className=''>
-            <div className="navbar bg-[#e84393] md:px-44 text-white">
+            <div className="navbar bg-[#e84393] md:px-44 text-white ">
                 <div className="navbar-start">
                     <div className="dropdown ">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <FaAlignJustify></FaAlignJustify>
                         </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-hover  dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-hover  dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 md:text-white text-black">
                             {navOptions}
                         </ul>
                     </div>

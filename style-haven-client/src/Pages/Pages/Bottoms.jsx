@@ -16,7 +16,7 @@ const Bottoms = () => {
                 <div>
                     <h3 className='text-5xl text-center mt-5'>Bottoms</h3>
                 </div>
-                <div className='grid md:grid-cols-4 gap-10 mb-5'>
+                <div className='grid md:grid-cols-4 gap-10 mb-5 justify-center'>
                     {
                         bottoms.map((bottom) => {
                             return (
