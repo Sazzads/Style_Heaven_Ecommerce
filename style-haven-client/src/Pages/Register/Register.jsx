@@ -69,14 +69,14 @@ const Register = () => {
 
 
     return (
-        <div className='max-w-screen-xl mx-auto bg-slate-100'>
+        <div className='max-w-screen-xl mx-auto bg-slate-100 '>
             <Helmet>
                 <title>StyleHeaven || Register</title>
             </Helmet>
             <h2 className='text-center text-5xl my-5 pt-10'>Please register</h2>
             <div className='grid md:grid-cols-2  '>
-                <div className='p-16 '>
-                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                <div className='md:px-8'>
+                    <form onSubmit={handleSubmit(onSubmit)} className="md:card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>

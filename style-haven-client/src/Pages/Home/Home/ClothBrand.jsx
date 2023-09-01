@@ -15,7 +15,7 @@ const ClothBrand = () => {
                 <p className='text-pink-600'>Brands</p>
                 <h2 className='text-4xl uppercase '><span className='border-b-4  text-black'>Top Brand</span></h2>
             </div>
-            <div className='grid md:grid-cols-4'>
+            <div className='grid md:grid-cols-4 sm:grid-cols-2'>
                 {
                     dresses.map((dress, index) => {
                         return (

@@ -15,7 +15,7 @@ const Accessories = () => {
             <div className='text-5xl text-center my-5'>
                 Accessories
             </div>
-            <div className='grid md:grid-cols-4 gap-10 mb-5 justify-center'>
+            <div className='grid md:grid-cols-4 sm:grid-cols-2 gap-10 mb-5 justify-center'>
                 {
                     accessories.map((accessories) => {
                         return (

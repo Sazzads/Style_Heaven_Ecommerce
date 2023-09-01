@@ -31,9 +31,9 @@ const Login = () => {
             <Helmet>
                 <title>StyleHeaven || Login</title>
             </Helmet>
-            <h2 className='text-center text-5xl my-5 pt-10'>Please Login</h2>
+            <h2 className='text-center text-5xl  pt-10'>Please Login</h2>
             <div className='grid md:grid-cols-2  '>
-                <div className='p-16 '>
+                <div className=' px-8'>
                     <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">

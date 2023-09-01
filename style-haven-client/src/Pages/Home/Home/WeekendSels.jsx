@@ -16,7 +16,7 @@ const WeekendSels = () => {
             </div>
          
         
-            <div className='grid md:grid-cols-4 gap-4 '>
+            <div className='grid md:grid-cols-4 sm:grid-cols-2 gap-4 '>
                 {
                     dresses.map((dress, index) => {
                         return (
