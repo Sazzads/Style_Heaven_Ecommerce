@@ -385,7 +385,7 @@ async function run() {
                 total_amount: order.price,
                 currency: 'BDT',
                 tran_id: tran_id, // use unique tran_id for each api call
-                success_url: `http://localhost:5000/payment/success/${tran_id}`,
+                success_url: `https://style-heaven.web.app/dashboard/paymenthistory`,
                 fail_url: 'http://localhost:3030/fail',
                 cancel_url: 'http://localhost:3030/cancel',
                 ipn_url: 'http://localhost:3030/ipn',
@@ -445,7 +445,7 @@ async function run() {
                 })
                 if (result.modifiedCount > 0) {
 
-                    res.redirect(`http://localhost:5173/dashboard/paymenthistory`,)
+                    res.redirect(`https://style-heaven.web.app/dashboard/paymenthistory`,)
                 }
                 const query = { _id: { $in: order.CartItems.map(id => new ObjectId(id)) } }
                 const deleteResult = cartCollection.deleteMany(query)

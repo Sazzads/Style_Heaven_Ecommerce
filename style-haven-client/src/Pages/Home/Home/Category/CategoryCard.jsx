@@ -50,14 +50,14 @@ const CategoryCard = ({ item }) => {
     return (
         <>
             <div
-                className="card w-80 bg-base-100 shadow-xl relative transition duration-300 ease-in-out hover:scale-110"
+                className="card w-100 bg-base-100 shadow-xl relative transition duration-300 ease-in-out hover:scale-110"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
                 <LazyLoad offset={50} threshold={0.95}>
 
-                <figure>
-                    <img src={image} alt="loading" loading="lazy" />
+                <figure className=''>
+                    <img className='w-100'  src={image} alt="loading" loading="lazy" />
                 </figure>
                 </LazyLoad>
                 {isHovered && (
